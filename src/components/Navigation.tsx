@@ -35,6 +35,11 @@ const Navigation = () => {
             <button onClick={() => scrollTo("contact")} className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">
               Contact
             </button>
+            <a href="https://voteparty.vercel.app" target="_blank" rel="noopener noreferrer">
+              <Button size="sm" className="bg-gradient-gold text-accent-foreground font-bold">
+                START VOTING SESSION
+              </Button>
+            </a>
             <Button variant="outline" size="sm" className="border-primary text-primary hover:bg-primary hover:text-primary-foreground">
               MEMBERSHIP LOGIN
             </Button>
@@ -51,6 +56,9 @@ const Navigation = () => {
             <button onClick={() => scrollTo("pledge")} className="block w-full text-left text-sm font-medium text-muted-foreground hover:text-foreground py-2">Join & Pledge</button>
             <button onClick={() => scrollTo("get-involved")} className="block w-full text-left text-sm font-medium text-muted-foreground hover:text-foreground py-2">Get Involved</button>
             <button onClick={() => scrollTo("contact")} className="block w-full text-left text-sm font-medium text-muted-foreground hover:text-foreground py-2">Contact</button>
+            <a href="https://voteparty.vercel.app" target="_blank" rel="noopener noreferrer" className="block">
+              <Button size="sm" className="w-full bg-gradient-gold text-accent-foreground font-bold">START VOTING SESSION</Button>
+            </a>
             <Button variant="outline" size="sm" className="w-full border-primary text-primary hover:bg-primary hover:text-primary-foreground">MEMBERSHIP LOGIN</Button>
           </div>
         )}

@@ -14,7 +14,42 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      pledges: {
+        Row: {
+          contact_method: string
+          created_at: string
+          email: string | null
+          full_name: string
+          id: string
+          mobile: string | null
+          national_id: string | null
+          province: string
+          transaction_id: string
+        }
+        Insert: {
+          contact_method: string
+          created_at?: string
+          email?: string | null
+          full_name: string
+          id?: string
+          mobile?: string | null
+          national_id?: string | null
+          province: string
+          transaction_id?: string
+        }
+        Update: {
+          contact_method?: string
+          created_at?: string
+          email?: string | null
+          full_name?: string
+          id?: string
+          mobile?: string | null
+          national_id?: string | null
+          province?: string
+          transaction_id?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never

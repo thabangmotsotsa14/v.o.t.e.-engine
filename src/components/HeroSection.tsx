@@ -29,7 +29,7 @@ const HeroSection = () => {
 
         <h1 className="animate-fade-in-up-delay-1 font-display text-4xl md:text-6xl lg:text-7xl font-bold max-w-5xl mx-auto leading-tight">
           <span className="text-primary-foreground">V.O.T.E. Party: </span>
-          <span className="text-gradient-gold">Shielding Your Voice</span>
+          <span className="text-gradient-gold">Vote</span>
           <span className="text-primary-foreground"> with Data Integrity.</span>
         </h1>
 

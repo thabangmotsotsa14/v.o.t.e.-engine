@@ -5,7 +5,7 @@ const TARGET = 1_000_000;
 
 const LiveCounter = () => {
   const [count, setCount] = useState(0);
-  const displayCount = 12_847; // Placeholder until backend
+  const displayCount = 190; // Placeholder until backend
 
   useEffect(() => {
     let frame: number;

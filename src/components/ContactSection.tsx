@@ -16,7 +16,7 @@ const ContactSection = () => {
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button
-              onClick={() => window.open("mailto:info@voteparty.co.za", "_blank")}
+              onClick={() => window.open("mailto:eugene.motsotsa@gmail.com", "_blank")}
               size="lg"
               variant="outline"
               className="border-primary text-primary hover:bg-primary hover:text-primary-foreground font-medium"
@@ -25,7 +25,7 @@ const ContactSection = () => {
               Email Us
             </Button>
             <Button
-              onClick={() => window.open("https://wa.me/27000000000", "_blank")}
+              onClick={() => window.open("https://wa.me/27670628019", "_blank")}
               size="lg"
               className="bg-primary text-primary-foreground font-medium"
             >

@@ -1,13 +1,35 @@
 import { useEffect, useState } from "react";
 import { Users } from "lucide-react";
+import { supabase } from "@/integrations/supabase/client";
 
 const TARGET = 1_000_000;
 
 const LiveCounter = () => {
   const [count, setCount] = useState(0);
-  const displayCount = 190; // Placeholder until backend
+  const [dbCount, setDbCount] = useState(0);
 
   useEffect(() => {
+    const fetchCount = async () => {
+      const { count, error } = await supabase
+        .from("pledges")
+        .select("*", { count: "exact", head: true });
+      if (!error && count !== null) setDbCount(count);
+    };
+    fetchCount();
+
+    // Subscribe to real-time inserts
+    const channel = supabase
+      .channel("pledges-count")
+      .on("postgres_changes", { event: "INSERT", schema: "public", table: "pledges" }, () => {
+        setDbCount((prev) => prev + 1);
+      })
+      .subscribe();
+
+    return () => { supabase.removeChannel(channel); };
+  }, []);
+
+  useEffect(() => {
+    if (dbCount === 0) return;
     let frame: number;
     const duration = 2000;
     const start = performance.now();
@@ -16,13 +38,13 @@ const LiveCounter = () => {
       const elapsed = now - start;
       const progress = Math.min(elapsed / duration, 1);
       const eased = 1 - Math.pow(1 - progress, 3);
-      setCount(Math.floor(eased * displayCount));
+      setCount(Math.floor(eased * dbCount));
       if (progress < 1) frame = requestAnimationFrame(animate);
     };
 
     frame = requestAnimationFrame(animate);
     return () => cancelAnimationFrame(frame);
-  }, [displayCount]);
+  }, [dbCount]);
 
   const percentage = (count / TARGET) * 100;
 
@@ -45,7 +67,7 @@ const LiveCounter = () => {
           <div className="w-full md:w-64 h-3 rounded-full bg-primary-foreground/10 overflow-hidden">
             <div
               className="h-full bg-gradient-gold rounded-full transition-all duration-1000"
-              style={{ width: `${percentage}%` }}
+              style={{ width: `${Math.max(percentage, 0.1)}%` }}
             />
           </div>
         </div>

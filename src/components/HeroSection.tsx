@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { ArrowDown, Shield } from "lucide-react";
-import voteLogo from "@/assets/vote-logo.png";
+import voteLogo from "@/assets/vote-logo-new.png";
 import heroBg from "@/assets/hero-bg.jpg";
 
 const HeroSection = () => {
@@ -16,7 +16,7 @@ const HeroSection = () => {
       />
       <div className="absolute inset-0 bg-gradient-hero opacity-85" />
 
-      <div className="relative z-10 container mx-auto px-4 text-center pt-20">
+      <div className="relative z-10 container mx-auto px-4 text-center pt-28">
         <div className="animate-fade-in-up">
           <img
             src={voteLogo}
@@ -28,15 +28,15 @@ const HeroSection = () => {
         </div>
 
         <h1 className="animate-fade-in-up-delay-1 font-display text-4xl md:text-6xl lg:text-7xl font-bold max-w-5xl mx-auto leading-tight">
-          <span className="text-primary-foreground">V.O.T.E. Party </span>
-          <span className="text-gradient-gold">For</span>
-          <span className="text-primary-foreground"> Data Transparency & Integrity.</span>
+          <span className="text-primary-foreground">Power is a </span>
+          <span className="text-gradient-gold">Function</span>
+          <span className="text-primary-foreground"> of Transparency.</span>
         </h1>
 
         <p className="animate-fade-in-up-delay-2 mt-6 text-lg md:text-xl max-w-3xl mx-auto text-primary-foreground/70 leading-relaxed">
-          We aren't just a political party; we are the{" "}
-          <strong className="text-primary-foreground">Virtual Organized Transparency Engine</strong>,
-          pioneering e-voting and mobile voting as a fundamental, probable reality — step by step.
+          The <strong className="text-primary-foreground">Virtual Organized Transparency Engine</strong> — 
+          pioneering <strong className="text-vote-gold">Compliance-as-a-Service</strong> governance. 
+          We are moving away from trusting individuals and toward verifying systems.
         </p>
 
         <div className="animate-fade-in-up-delay-3 mt-10 flex flex-col sm:flex-row gap-4 justify-center">

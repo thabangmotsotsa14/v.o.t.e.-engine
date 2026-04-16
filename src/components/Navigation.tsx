@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import voteLogo from "@/assets/vote-logo.png";
+import voteLogo from "@/assets/vote-logo-new.png";
 
 const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -12,7 +12,7 @@ const Navigation = () => {
   };
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-lg border-b border-border">
+    <nav className="fixed top-8 left-0 right-0 z-50 bg-background/80 backdrop-blur-lg border-b border-border">
       <div className="container mx-auto px-4 lg:px-8">
         <div className="flex items-center justify-between h-16">
           <div className="flex items-center gap-2 cursor-pointer" onClick={() => scrollTo("hero")}>
@@ -26,11 +26,11 @@ const Navigation = () => {
             <button onClick={() => scrollTo("manifesto")} className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">
               Manifesto
             </button>
+            <button onClick={() => scrollTo("legal")} className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">
+              Legal Framework
+            </button>
             <button onClick={() => scrollTo("pledge")} className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">
               Join & Pledge
-            </button>
-            <button onClick={() => scrollTo("get-involved")} className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">
-              Get Involved
             </button>
             <button onClick={() => scrollTo("contact")} className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">
               Contact
@@ -40,9 +40,6 @@ const Navigation = () => {
                 START VOTING SESSION
               </Button>
             </a>
-            <Button variant="outline" size="sm" className="border-primary text-primary hover:bg-primary hover:text-primary-foreground">
-              MEMBERSHIP LOGIN
-            </Button>
           </div>
 
           <button className="md:hidden text-foreground" onClick={() => setIsOpen(!isOpen)}>
@@ -53,13 +50,12 @@ const Navigation = () => {
         {isOpen && (
           <div className="md:hidden pb-4 space-y-3">
             <button onClick={() => scrollTo("manifesto")} className="block w-full text-left text-sm font-medium text-muted-foreground hover:text-foreground py-2">Manifesto</button>
+            <button onClick={() => scrollTo("legal")} className="block w-full text-left text-sm font-medium text-muted-foreground hover:text-foreground py-2">Legal Framework</button>
             <button onClick={() => scrollTo("pledge")} className="block w-full text-left text-sm font-medium text-muted-foreground hover:text-foreground py-2">Join & Pledge</button>
-            <button onClick={() => scrollTo("get-involved")} className="block w-full text-left text-sm font-medium text-muted-foreground hover:text-foreground py-2">Get Involved</button>
             <button onClick={() => scrollTo("contact")} className="block w-full text-left text-sm font-medium text-muted-foreground hover:text-foreground py-2">Contact</button>
             <a href="https://voteparty.vercel.app" target="_blank" rel="noopener noreferrer" className="block">
               <Button size="sm" className="w-full bg-gradient-gold text-accent-foreground font-bold">START VOTING SESSION</Button>
             </a>
-            <Button variant="outline" size="sm" className="w-full border-primary text-primary hover:bg-primary hover:text-primary-foreground">MEMBERSHIP LOGIN</Button>
           </div>
         )}
       </div>

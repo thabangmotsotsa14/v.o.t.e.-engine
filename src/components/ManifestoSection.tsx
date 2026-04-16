@@ -1,25 +1,35 @@
-import { Shield, Eye, Database, FileCheck } from "lucide-react";
+import { Shield, Eye, Database, FileCheck, Cpu, Lock } from "lucide-react";
 
 const pillars = [
   {
+    icon: Cpu,
+    title: "The Engine",
+    description: "We are moving away from trusting individuals and toward verifying systems. V.O.T.E. is an Engine built on cryptographic proofs — every action, every decision, auditable by design.",
+  },
+  {
     icon: Eye,
-    title: "Transparency as Infrastructure",
-    description: "It's not just policy; it's an Engine built on verifiable cryptographic proofs. Every action, every decision — auditable by design.",
+    title: "The Goal",
+    description: "Making e-voting and mobile voting a probability in South Africa through mathematical certainty, not just political promises. We turn constitutional rights into executable code.",
   },
   {
     icon: Shield,
-    title: "Accountability via Technology",
-    description: "Removing human bias and negligence from the electoral chain through automated, secure digital systems.",
+    title: "Compliance-as-a-Service",
+    description: "Running governance with the audit rigor of a regulated digital service. Every process is transparent, every outcome verifiable, every participant accountable.",
   },
   {
     icon: Database,
     title: "Data Integrity",
-    description: "A commitment to absolute, verifiable vote immutability. Your voice, preserved forever, tamper-proof.",
+    description: "Absolute, verifiable vote immutability. Your voice is preserved forever — tamper-proof, cryptographically sealed, and publicly auditable.",
+  },
+  {
+    icon: Lock,
+    title: "Consensus-as-a-Service",
+    description: "Our distributed consensus model ensures no single entity controls electoral outcomes. Decisions emerge from verified, transparent, collective participation.",
   },
   {
     icon: FileCheck,
-    title: "Compliance-as-a-Service",
-    description: "Running the party and its governance with the rigorous audit standards of a regulated digital service.",
+    title: "Accountability via Technology",
+    description: "Removing human bias and negligence from the electoral chain through automated, secure digital systems that answer to math, not politics.",
   },
 ];
 
@@ -34,11 +44,11 @@ const ManifestoSection = () => {
           </h2>
           <p className="text-muted-foreground text-lg leading-relaxed">
             Our mission: to make secure e-voting and mobile voting <strong>probable</strong> in South Africa first,
-            ensuring every citizen becomes an audited node in the democracy.
+            ensuring every citizen becomes an audited node in the democracy. We don't make promises — we build proofs.
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 gap-6 max-w-5xl mx-auto">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
           {pillars.map((pillar) => (
             <div
               key={pillar.title}

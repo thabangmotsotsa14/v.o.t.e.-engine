@@ -14,6 +14,36 @@ export type Database = {
   }
   public: {
     Tables: {
+      members: {
+        Row: {
+          email: string
+          full_name: string
+          id: string
+          is_verified: boolean | null
+          joined_at: string
+          mobile_number: string | null
+          province: string | null
+        }
+        Insert: {
+          email: string
+          full_name: string
+          id?: string
+          is_verified?: boolean | null
+          joined_at?: string
+          mobile_number?: string | null
+          province?: string | null
+        }
+        Update: {
+          email?: string
+          full_name?: string
+          id?: string
+          is_verified?: boolean | null
+          joined_at?: string
+          mobile_number?: string | null
+          province?: string | null
+        }
+        Relationships: []
+      }
       pledges: {
         Row: {
           contact_method: string

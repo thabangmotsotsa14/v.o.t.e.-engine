@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { Link } from "react-router-dom";
 import voteLogo from "@/assets/vote-logo-new.png";
 
 const Navigation = () => {
@@ -29,6 +30,9 @@ const Navigation = () => {
             <button onClick={() => scrollTo("legal")} className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">
               Legal Framework
             </button>
+            <Link to="/founder" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">
+              Founder
+            </Link>
             <button onClick={() => scrollTo("pledge")} className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">
               Join & Pledge
             </button>
@@ -51,6 +55,7 @@ const Navigation = () => {
           <div className="md:hidden pb-4 space-y-3">
             <button onClick={() => scrollTo("manifesto")} className="block w-full text-left text-sm font-medium text-muted-foreground hover:text-foreground py-2">Manifesto</button>
             <button onClick={() => scrollTo("legal")} className="block w-full text-left text-sm font-medium text-muted-foreground hover:text-foreground py-2">Legal Framework</button>
+            <Link to="/founder" className="block w-full text-left text-sm font-medium text-muted-foreground hover:text-foreground py-2" onClick={() => setIsOpen(false)}>Founder</Link>
             <button onClick={() => scrollTo("pledge")} className="block w-full text-left text-sm font-medium text-muted-foreground hover:text-foreground py-2">Join & Pledge</button>
             <button onClick={() => scrollTo("contact")} className="block w-full text-left text-sm font-medium text-muted-foreground hover:text-foreground py-2">Contact</button>
             <a href="https://voteparty.vercel.app" target="_blank" rel="noopener noreferrer" className="block">

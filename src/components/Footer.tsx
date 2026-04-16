@@ -10,7 +10,7 @@ const Footer = () => {
             <span className="font-display font-bold text-primary-foreground">V.O.T.E. Party</span>
           </div>
           <p className="text-primary-foreground/40 text-sm text-center">
-            Virtual Organized Transparency Engine · Compliance-as-a-Service · Governance-as-a-Service
+            Virtual Organized Transparency Engine · Consensus-as-a-Service
           </p>
           <p className="text-primary-foreground/30 text-xs">
             © {new Date().getFullYear()} V.O.T.E. Party. All rights reserved.

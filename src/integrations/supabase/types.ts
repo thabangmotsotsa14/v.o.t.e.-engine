@@ -14,6 +14,171 @@ export type Database = {
   }
   public: {
     Tables: {
+      contact_submissions: {
+        Row: {
+          created_at: string
+          email: string
+          full_name: string
+          id: string
+          message: string
+          source: string | null
+          subject: string | null
+        }
+        Insert: {
+          created_at?: string
+          email: string
+          full_name: string
+          id?: string
+          message: string
+          source?: string | null
+          subject?: string | null
+        }
+        Update: {
+          created_at?: string
+          email?: string
+          full_name?: string
+          id?: string
+          message?: string
+          source?: string | null
+          subject?: string | null
+        }
+        Relationships: []
+      }
+      deed_of_foundation_signatures: {
+        Row: {
+          digital_consent: boolean
+          email: string | null
+          full_name: string
+          id: string
+          id_number_hash: string
+          province: string
+          signed_at: string
+          transaction_id: string
+        }
+        Insert: {
+          digital_consent?: boolean
+          email?: string | null
+          full_name: string
+          id?: string
+          id_number_hash: string
+          province: string
+          signed_at?: string
+          transaction_id?: string
+        }
+        Update: {
+          digital_consent?: boolean
+          email?: string | null
+          full_name?: string
+          id?: string
+          id_number_hash?: string
+          province?: string
+          signed_at?: string
+          transaction_id?: string
+        }
+        Relationships: []
+      }
+      donations: {
+        Row: {
+          amount: number
+          created_at: string
+          email: string
+          full_name: string
+          id: string
+          message: string | null
+          purpose: string
+          transaction_id: string
+        }
+        Insert: {
+          amount: number
+          created_at?: string
+          email: string
+          full_name: string
+          id?: string
+          message?: string | null
+          purpose: string
+          transaction_id?: string
+        }
+        Update: {
+          amount?: number
+          created_at?: string
+          email?: string
+          full_name?: string
+          id?: string
+          message?: string | null
+          purpose?: string
+          transaction_id?: string
+        }
+        Relationships: []
+      }
+      hotspot_metadata: {
+        Row: {
+          category: string
+          created_at: string
+          description: string | null
+          display_order: number | null
+          icon: string | null
+          id: string
+          search_tags: string[] | null
+          target_url: string
+          title: string
+        }
+        Insert: {
+          category: string
+          created_at?: string
+          description?: string | null
+          display_order?: number | null
+          icon?: string | null
+          id?: string
+          search_tags?: string[] | null
+          target_url: string
+          title: string
+        }
+        Update: {
+          category?: string
+          created_at?: string
+          description?: string | null
+          display_order?: number | null
+          icon?: string | null
+          id?: string
+          search_tags?: string[] | null
+          target_url?: string
+          title?: string
+        }
+        Relationships: []
+      }
+      interview_bookings: {
+        Row: {
+          created_at: string
+          email: string
+          full_name: string
+          id: string
+          message: string | null
+          organization: string | null
+          preferred_date: string | null
+          topic: string | null
+        }
+        Insert: {
+          created_at?: string
+          email: string
+          full_name: string
+          id?: string
+          message?: string | null
+          organization?: string | null
+          preferred_date?: string | null
+          topic?: string | null
+        }
+        Update: {
+          created_at?: string
+          email?: string
+          full_name?: string
+          id?: string
+          message?: string | null
+          organization?: string | null
+          preferred_date?: string | null
+          topic?: string | null
+        }
+        Relationships: []
+      }
       members: {
         Row: {
           email: string

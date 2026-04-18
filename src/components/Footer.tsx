@@ -22,13 +22,19 @@ const Footer = () => {
           <div>
             <h4 className="font-display font-bold text-primary-foreground mb-4">Quick Links</h4>
             <div className="space-y-2">
-              {["manifesto", "legal", "pledge", "contact"].map((id) => (
+              {[
+                { id: "hotspot", label: "V.O.T.E. Hotspot" },
+                { id: "deed", label: "Sign the Deed" },
+                { id: "manifesto", label: "Manifesto" },
+                { id: "donations", label: "Donate" },
+                { id: "contact", label: "Contact" },
+              ].map(({ id, label }) => (
                 <button
                   key={id}
                   onClick={() => document.getElementById(id)?.scrollIntoView({ behavior: "smooth" })}
-                  className="block text-sm text-primary-foreground/50 hover:text-vote-gold transition-colors capitalize"
+                  className="block text-sm text-primary-foreground/50 hover:text-vote-gold transition-colors"
                 >
-                  {id === "legal" ? "Legal Framework" : id === "pledge" ? "Join & Pledge" : id}
+                  {label}
                 </button>
               ))}
               <a
@@ -38,6 +44,14 @@ const Footer = () => {
                 className="block text-sm text-vote-gold hover:text-vote-gold/80 transition-colors font-medium"
               >
                 Start Voting Session →
+              </a>
+              <a
+                href="https://apps.apple.com/za/app/iec-mobile-app/id1532013548"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="block text-sm text-primary-foreground/50 hover:text-vote-gold transition-colors"
+              >
+                IEC Mobile App ↗
               </a>
             </div>
           </div>

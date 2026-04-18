@@ -1,8 +1,16 @@
 import { useState } from "react";
-import { Menu, X } from "lucide-react";
+import { Menu, X, Home, FileText, Scroll, Heart, Search, Mail, ExternalLink, User } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import voteLogo from "@/assets/vote-logo-new.png";
+
+const navItems = [
+  { id: "hotspot", label: "Hotspot", icon: Search },
+  { id: "manifesto", label: "Manifesto", icon: FileText },
+  { id: "deed", label: "Sign Deed", icon: Scroll },
+  { id: "donations", label: "Donate", icon: Heart },
+  { id: "contact", label: "Contact", icon: Mail },
+] as const;
 
 const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -16,50 +24,73 @@ const Navigation = () => {
     <nav className="fixed top-8 left-0 right-0 z-50 bg-background/80 backdrop-blur-lg border-b border-border">
       <div className="container mx-auto px-4 lg:px-8">
         <div className="flex items-center justify-between h-16">
-          <div className="flex items-center gap-2 cursor-pointer" onClick={() => scrollTo("hero")}>
+          <button onClick={() => scrollTo("hero")} aria-label="Home" className="flex items-center gap-2">
             <img src={voteLogo} alt="V.O.T.E. Party" className="h-10 w-10" />
-            <span className="font-display font-bold text-lg text-foreground">
-              V.O.T.E. <span className="text-muted-foreground font-normal text-sm">Party</span>
+            <span className="font-display font-bold text-lg text-foreground hidden sm:inline">
+              V.O.T.E.
             </span>
-          </div>
+          </button>
 
-          <div className="hidden md:flex items-center gap-8">
-            <button onClick={() => scrollTo("manifesto")} className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">
-              Manifesto
-            </button>
-            <button onClick={() => scrollTo("legal")} className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">
-              Legal Framework
-            </button>
-            <Link to="/founder" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">
-              Founder
+          {/* Desktop: icon-led nav */}
+          <div className="hidden md:flex items-center gap-1">
+            {navItems.map(({ id, label, icon: Icon }) => (
+              <button
+                key={id}
+                onClick={() => scrollTo(id)}
+                aria-label={label}
+                title={label}
+                className="flex items-center gap-1.5 px-3 py-2 rounded-lg text-sm font-medium text-muted-foreground hover:text-foreground hover:bg-muted transition-colors"
+              >
+                <Icon className="h-4 w-4" />
+                <span className="hidden lg:inline">{label}</span>
+              </button>
+            ))}
+            <Link
+              to="/founder"
+              aria-label="Founder"
+              title="Founder"
+              className="flex items-center gap-1.5 px-3 py-2 rounded-lg text-sm font-medium text-muted-foreground hover:text-foreground hover:bg-muted transition-colors"
+            >
+              <User className="h-4 w-4" />
+              <span className="hidden lg:inline">Founder</span>
             </Link>
-            <button onClick={() => scrollTo("pledge")} className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">
-              Join & Pledge
-            </button>
-            <button onClick={() => scrollTo("contact")} className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">
-              Contact
-            </button>
-            <a href="https://voteparty.vercel.app" target="_blank" rel="noopener noreferrer">
+            <a href="https://voteparty.vercel.app" target="_blank" rel="noopener noreferrer" className="ml-2">
               <Button size="sm" className="bg-gradient-gold text-accent-foreground font-bold">
-                START VOTING SESSION
+                <ExternalLink className="mr-1.5 h-3.5 w-3.5" />
+                VOTE NOW
               </Button>
             </a>
           </div>
 
-          <button className="md:hidden text-foreground" onClick={() => setIsOpen(!isOpen)}>
+          <button className="md:hidden text-foreground" onClick={() => setIsOpen(!isOpen)} aria-label="Toggle menu">
             {isOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
         </div>
 
         {isOpen && (
-          <div className="md:hidden pb-4 space-y-3">
-            <button onClick={() => scrollTo("manifesto")} className="block w-full text-left text-sm font-medium text-muted-foreground hover:text-foreground py-2">Manifesto</button>
-            <button onClick={() => scrollTo("legal")} className="block w-full text-left text-sm font-medium text-muted-foreground hover:text-foreground py-2">Legal Framework</button>
-            <Link to="/founder" className="block w-full text-left text-sm font-medium text-muted-foreground hover:text-foreground py-2" onClick={() => setIsOpen(false)}>Founder</Link>
-            <button onClick={() => scrollTo("pledge")} className="block w-full text-left text-sm font-medium text-muted-foreground hover:text-foreground py-2">Join & Pledge</button>
-            <button onClick={() => scrollTo("contact")} className="block w-full text-left text-sm font-medium text-muted-foreground hover:text-foreground py-2">Contact</button>
-            <a href="https://voteparty.vercel.app" target="_blank" rel="noopener noreferrer" className="block">
-              <Button size="sm" className="w-full bg-gradient-gold text-accent-foreground font-bold">START VOTING SESSION</Button>
+          <div className="md:hidden pb-4 grid grid-cols-3 gap-2">
+            {navItems.map(({ id, label, icon: Icon }) => (
+              <button
+                key={id}
+                onClick={() => scrollTo(id)}
+                className="flex flex-col items-center gap-1 p-3 rounded-lg bg-muted text-muted-foreground hover:text-foreground"
+              >
+                <Icon className="h-5 w-5" />
+                <span className="text-xs">{label}</span>
+              </button>
+            ))}
+            <Link
+              to="/founder"
+              onClick={() => setIsOpen(false)}
+              className="flex flex-col items-center gap-1 p-3 rounded-lg bg-muted text-muted-foreground hover:text-foreground"
+            >
+              <User className="h-5 w-5" />
+              <span className="text-xs">Founder</span>
+            </Link>
+            <a href="https://voteparty.vercel.app" target="_blank" rel="noopener noreferrer" className="col-span-3 mt-2">
+              <Button size="sm" className="w-full bg-gradient-gold text-accent-foreground font-bold">
+                <ExternalLink className="mr-1.5 h-3.5 w-3.5" /> START VOTING SESSION
+              </Button>
             </a>
           </div>
         )}

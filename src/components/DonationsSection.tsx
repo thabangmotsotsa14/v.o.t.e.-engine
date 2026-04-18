@@ -62,7 +62,13 @@ const DonationsSection = () => {
     setLoading(true);
     const { data, error } = await supabase
       .from("donations")
-      .insert(parsed.data)
+      .insert({
+        full_name: parsed.data.full_name,
+        email: parsed.data.email,
+        amount: parsed.data.amount,
+        purpose: parsed.data.purpose,
+        message: parsed.data.message ?? null,
+      })
       .select("transaction_id")
       .single();
     setLoading(false);

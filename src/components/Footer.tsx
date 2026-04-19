@@ -60,7 +60,7 @@ const Footer = () => {
           <div>
             <h4 className="font-display font-bold text-primary-foreground mb-4">Media Kit</h4>
             <p className="text-primary-foreground/50 text-sm mb-4">
-              For the South African Podcasting Association (SAPA), digital strategists, and media inquiries.
+              For podcasters and media inquiries.
             </p>
             <div className="space-y-2">
               <a href="mailto:eugene.motsotsa@gmail.com" className="flex items-center gap-2 text-sm text-primary-foreground/60 hover:text-vote-gold transition-colors">

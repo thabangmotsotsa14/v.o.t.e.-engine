@@ -1,4 +1,4 @@
-import { ArrowLeft, Youtube, Linkedin, Globe, Mail, ExternalLink, Award, Play, Mic, Building2, GraduationCap } from "lucide-react";
+import { ArrowLeft, Youtube, Linkedin, Instagram, Mail, ExternalLink, Award, Play, Mic, Building2, GraduationCap } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import voteLogo from "@/assets/vote-logo-new.png";
@@ -19,11 +19,21 @@ const credentials = [
   "ICM UK — Diploma in International Trade",
   "Diploma in Applied Psychology — Consumer Behaviour",
   "JSE Registered Trader",
+  "University of Johannesburg — AI in 4IR Certificate",
+  "SAUSAC & YALI Alumni",
 ];
 
 const recognition = [
-  { label: "Recognized by US Embassy SA", icon: Award },
-  { label: "AMASA Council Member (Membership Portfolio)", icon: Building2 },
+  {
+    label: "Recognized by US Embassy SA",
+    icon: Award,
+    href: "https://www.instagram.com/p/C6oMQoex0TH/",
+  },
+  {
+    label: "AMASA Council Member (Membership Portfolio)",
+    icon: Building2,
+    href: "https://www.amasa.org/team/thabang-motsotsa/",
+  },
 ];
 
 const speakingEngagements = [

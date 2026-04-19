@@ -185,29 +185,56 @@ const Founder = () => {
             <h2 className="font-display text-3xl font-bold text-foreground">Speaking & Media</h2>
             <p className="text-muted-foreground mt-2">Selected engagements on civic tech, finance, and media integrity.</p>
           </div>
+          <div className="grid md:grid-cols-2 gap-6 mb-10">
+            {[
+              {
+                src: "/videos/founder-speaking-1.mp4",
+                org: "Speaking Engagement",
+                topic: "On civic technology, transparency, and participatory governance.",
+                accent: "bg-primary/10 text-primary",
+                Icon: Mic,
+              },
+              {
+                src: "/videos/clockwork-values.mp4",
+                org: "Clockwork — Values in Practice",
+                topic: "Strategy, data integrity, and culture from years at Clockwork.",
+                accent: "bg-vote-gold/10 text-vote-gold",
+                Icon: Building2,
+              },
+            ].map((v) => {
+              const Icon = v.Icon;
+              return (
+                <div key={v.src} className="bg-card border border-border rounded-xl overflow-hidden">
+                  <div className="aspect-video bg-vote-navy">
+                    <video
+                      src={v.src}
+                      controls
+                      preload="metadata"
+                      playsInline
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
+                  <div className="p-5">
+                    <div className={`inline-flex items-center gap-1.5 px-2 py-1 rounded-full text-xs font-bold mb-2 ${v.accent}`}>
+                      <Icon className="h-3 w-3" />
+                      {v.org}
+                    </div>
+                    <p className="text-sm text-muted-foreground">{v.topic}</p>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
           <div className="grid md:grid-cols-3 gap-5">
             {speakingEngagements.map((s) => {
               const Icon = s.icon;
               return (
-                <div key={s.org} className="bg-card border border-border rounded-xl overflow-hidden group">
-                  <div className="aspect-video bg-vote-navy relative flex items-center justify-center">
-                    <Icon className="h-12 w-12 text-primary-foreground/20" />
-                    <div className="absolute inset-0 flex items-center justify-center">
-                      <div className="bg-vote-gold/90 rounded-full p-4 group-hover:scale-110 transition-transform">
-                        <Play className="h-5 w-5 text-accent-foreground fill-accent-foreground" />
-                      </div>
-                    </div>
-                    <span className="absolute bottom-2 right-2 text-[10px] uppercase tracking-widest text-primary-foreground/40 bg-black/40 px-2 py-0.5 rounded">
-                      Coming soon
-                    </span>
+                <div key={s.org} className="bg-card border border-border rounded-xl p-5">
+                  <div className={`inline-flex items-center gap-1.5 px-2 py-1 rounded-full text-xs font-bold mb-2 ${s.accent}`}>
+                    <Icon className="h-3 w-3" />
+                    {s.org}
                   </div>
-                  <div className="p-5">
-                    <div className={`inline-flex items-center gap-1.5 px-2 py-1 rounded-full text-xs font-bold mb-2 ${s.accent}`}>
-                      <Icon className="h-3 w-3" />
-                      {s.org}
-                    </div>
-                    <p className="text-sm text-muted-foreground">{s.topic}</p>
-                  </div>
+                  <p className="text-sm text-muted-foreground">{s.topic}</p>
                 </div>
               );
             })}

@@ -35,7 +35,7 @@ const HeroSection = () => {
 
         <p className="animate-fade-in-up-delay-2 mt-6 text-lg md:text-xl max-w-3xl mx-auto text-primary-foreground/70 leading-relaxed">
           The <strong className="text-primary-foreground">Virtual Organized Transparency Engine</strong> — 
-          pioneering <strong className="text-vote-gold">Compliance-as-a-Service</strong> governance. 
+          pioneering <strong className="text-vote-gold">Consensus-as-a-Service</strong> governance. 
           We are moving away from trusting individuals and toward verifying systems.
         </p>
 

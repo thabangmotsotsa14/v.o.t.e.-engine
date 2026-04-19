@@ -21,7 +21,7 @@ const HeroSection = () => {
           <img
             src={voteLogo}
             alt="V.O.T.E. Party Logo"
-            className="mx-auto h-28 w-28 md:h-36 md:w-36 animate-float mb-8"
+            className="mx-auto h-28 w-28 md:h-36 md:w-36 mb-8"
             width={512}
             height={512}
           />

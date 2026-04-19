@@ -104,28 +104,23 @@ const Founder = () => {
                   className="bg-accent/20 hover:bg-accent/30 text-accent rounded-full p-2 transition-colors">
                   <Mail className="h-5 w-5" />
                 </a>
-                {/* Microsoft Azure AI Engineer badge — links to Credly */}
-                <a
-                  href="https://learn.microsoft.com/en-us/users/thabangmotsotsa/credentials"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label="Microsoft Azure AI Engineer Associate transcript"
-                  title="Microsoft Azure AI Engineer Associate"
-                  className="flex items-center gap-2 bg-[#0078D4]/15 hover:bg-[#0078D4]/25 text-[#4FC3F7] rounded-full px-3 py-2 transition-colors text-xs font-bold"
-                >
-                  {/* Microsoft 4-square mark */}
-                  <svg viewBox="0 0 23 23" className="h-4 w-4" aria-hidden="true">
-                    <rect x="1" y="1" width="10" height="10" fill="#F25022"/>
-                    <rect x="12" y="1" width="10" height="10" fill="#7FBA00"/>
-                    <rect x="1" y="12" width="10" height="10" fill="#00A4EF"/>
-                    <rect x="12" y="12" width="10" height="10" fill="#FFB900"/>
-                  </svg>
-                  Azure AI Engineer
-                </a>
-                <a href="https://vote.org.za/thabangmotsotsa" target="_blank" rel="noopener noreferrer"
-                  aria-label="Profile site"
+                <a href="https://www.instagram.com/who_is_scotfree" target="_blank" rel="noopener noreferrer"
+                  aria-label="Instagram"
                   className="bg-accent/20 hover:bg-accent/30 text-accent rounded-full p-2 transition-colors">
-                  <Globe className="h-5 w-5" />
+                  <Instagram className="h-5 w-5" />
+                </a>
+                <a href="https://x.com/leorizenlive" target="_blank" rel="noopener noreferrer"
+                  aria-label="X (Twitter)"
+                  className="bg-accent/20 hover:bg-accent/30 text-accent rounded-full p-2 transition-colors">
+                  <svg viewBox="0 0 24 24" className="h-5 w-5" fill="currentColor" aria-hidden="true">
+                    <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231 5.45-6.231Zm-1.161 17.52h1.833L7.084 4.126H5.117L17.083 19.77Z"/>
+                  </svg>
+                </a>
+                <a href="https://www.amasa.org/team/thabang-motsotsa/" target="_blank" rel="noopener noreferrer"
+                  aria-label="AMASA profile"
+                  className="flex items-center gap-2 bg-accent/20 hover:bg-accent/30 text-accent rounded-full px-3 py-2 transition-colors text-xs font-bold">
+                  <Building2 className="h-4 w-4" />
+                  AMASA
                 </a>
               </div>
             </div>

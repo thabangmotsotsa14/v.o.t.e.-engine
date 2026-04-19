@@ -77,7 +77,7 @@ const Founder = () => {
               </h1>
               <p className="text-primary-foreground/70 text-sm font-medium mt-1">a.k.a. Leo Rizen</p>
               <p className="text-primary-foreground/70 text-base mt-3 max-w-xl">
-                Strategist in Digital Communications & AI
+                Join me in building first ever online political party, V.O.T.E Party a Consensus-as-a-Service (CaaS) transparency engine pioneering mobile voting in South Africa. Help us reach 1 million members by November 2026 by pledging with your name or donation.
               </p>
               <div className="flex flex-wrap gap-3 mt-5 items-center">
                 <a href="https://www.youtube.com/@leorizen99" target="_blank" rel="noopener noreferrer"

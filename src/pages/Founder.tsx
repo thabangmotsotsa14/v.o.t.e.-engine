@@ -1,4 +1,4 @@
-import { ArrowLeft, Youtube, Linkedin, Globe, Mail, ExternalLink, Award, Play, Mic, Building2, GraduationCap } from "lucide-react";
+import { ArrowLeft, Youtube, Linkedin, Instagram, Mail, ExternalLink, Award, Play, Mic, Building2, GraduationCap } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import voteLogo from "@/assets/vote-logo-new.png";
@@ -19,11 +19,21 @@ const credentials = [
   "ICM UK — Diploma in International Trade",
   "Diploma in Applied Psychology — Consumer Behaviour",
   "JSE Registered Trader",
+  "University of Johannesburg — AI in 4IR Certificate",
+  "SAUSAC & YALI Alumni",
 ];
 
 const recognition = [
-  { label: "Recognized by US Embassy SA", icon: Award },
-  { label: "AMASA Council Member (Membership Portfolio)", icon: Building2 },
+  {
+    label: "Recognized by US Embassy SA",
+    icon: Award,
+    href: "https://www.instagram.com/p/C6oMQoex0TH/",
+  },
+  {
+    label: "AMASA Council Member (Membership Portfolio)",
+    icon: Building2,
+    href: "https://www.amasa.org/team/thabang-motsotsa/",
+  },
 ];
 
 const speakingEngagements = [
@@ -94,28 +104,23 @@ const Founder = () => {
                   className="bg-accent/20 hover:bg-accent/30 text-accent rounded-full p-2 transition-colors">
                   <Mail className="h-5 w-5" />
                 </a>
-                {/* Microsoft Azure AI Engineer badge — links to Credly */}
-                <a
-                  href="https://learn.microsoft.com/en-us/users/thabangmotsotsa/credentials"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label="Microsoft Azure AI Engineer Associate transcript"
-                  title="Microsoft Azure AI Engineer Associate"
-                  className="flex items-center gap-2 bg-[#0078D4]/15 hover:bg-[#0078D4]/25 text-[#4FC3F7] rounded-full px-3 py-2 transition-colors text-xs font-bold"
-                >
-                  {/* Microsoft 4-square mark */}
-                  <svg viewBox="0 0 23 23" className="h-4 w-4" aria-hidden="true">
-                    <rect x="1" y="1" width="10" height="10" fill="#F25022"/>
-                    <rect x="12" y="1" width="10" height="10" fill="#7FBA00"/>
-                    <rect x="1" y="12" width="10" height="10" fill="#00A4EF"/>
-                    <rect x="12" y="12" width="10" height="10" fill="#FFB900"/>
-                  </svg>
-                  Azure AI Engineer
-                </a>
-                <a href="https://vote.org.za/thabangmotsotsa" target="_blank" rel="noopener noreferrer"
-                  aria-label="Profile site"
+                <a href="https://www.instagram.com/who_is_scotfree" target="_blank" rel="noopener noreferrer"
+                  aria-label="Instagram"
                   className="bg-accent/20 hover:bg-accent/30 text-accent rounded-full p-2 transition-colors">
-                  <Globe className="h-5 w-5" />
+                  <Instagram className="h-5 w-5" />
+                </a>
+                <a href="https://x.com/leorizenlive" target="_blank" rel="noopener noreferrer"
+                  aria-label="X (Twitter)"
+                  className="bg-accent/20 hover:bg-accent/30 text-accent rounded-full p-2 transition-colors">
+                  <svg viewBox="0 0 24 24" className="h-5 w-5" fill="currentColor" aria-hidden="true">
+                    <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231 5.45-6.231Zm-1.161 17.52h1.833L7.084 4.126H5.117L17.083 19.77Z"/>
+                  </svg>
+                </a>
+                <a href="https://www.amasa.org/team/thabang-motsotsa/" target="_blank" rel="noopener noreferrer"
+                  aria-label="AMASA profile"
+                  className="flex items-center gap-2 bg-accent/20 hover:bg-accent/30 text-accent rounded-full px-3 py-2 transition-colors text-xs font-bold">
+                  <Building2 className="h-4 w-4" />
+                  AMASA
                 </a>
               </div>
             </div>
@@ -129,10 +134,17 @@ const Founder = () => {
           {recognition.map((r) => {
             const Icon = r.icon;
             return (
-              <div key={r.label} className="flex items-center gap-2 bg-card border border-border rounded-full px-4 py-2">
+              <a
+                key={r.label}
+                href={r.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-2 bg-card border border-border rounded-full px-4 py-2 hover:border-vote-gold hover:bg-vote-gold/5 transition-colors"
+              >
                 <Icon className="h-4 w-4 text-vote-gold" />
                 <span className="text-sm font-bold text-foreground">{r.label}</span>
-              </div>
+                <ExternalLink className="h-3 w-3 text-muted-foreground" />
+              </a>
             );
           })}
         </div>
@@ -173,29 +185,56 @@ const Founder = () => {
             <h2 className="font-display text-3xl font-bold text-foreground">Speaking & Media</h2>
             <p className="text-muted-foreground mt-2">Selected engagements on civic tech, finance, and media integrity.</p>
           </div>
+          <div className="grid md:grid-cols-2 gap-6 mb-10">
+            {[
+              {
+                src: "/videos/founder-speaking-1.mp4",
+                org: "Speaking Engagement",
+                topic: "On civic technology, transparency, and participatory governance.",
+                accent: "bg-primary/10 text-primary",
+                Icon: Mic,
+              },
+              {
+                src: "/videos/clockwork-values.mp4",
+                org: "Clockwork — Values in Practice",
+                topic: "Strategy, data integrity, and culture from years at Clockwork.",
+                accent: "bg-vote-gold/10 text-vote-gold",
+                Icon: Building2,
+              },
+            ].map((v) => {
+              const Icon = v.Icon;
+              return (
+                <div key={v.src} className="bg-card border border-border rounded-xl overflow-hidden">
+                  <div className="aspect-video bg-vote-navy">
+                    <video
+                      src={v.src}
+                      controls
+                      preload="metadata"
+                      playsInline
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
+                  <div className="p-5">
+                    <div className={`inline-flex items-center gap-1.5 px-2 py-1 rounded-full text-xs font-bold mb-2 ${v.accent}`}>
+                      <Icon className="h-3 w-3" />
+                      {v.org}
+                    </div>
+                    <p className="text-sm text-muted-foreground">{v.topic}</p>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
           <div className="grid md:grid-cols-3 gap-5">
             {speakingEngagements.map((s) => {
               const Icon = s.icon;
               return (
-                <div key={s.org} className="bg-card border border-border rounded-xl overflow-hidden group">
-                  <div className="aspect-video bg-vote-navy relative flex items-center justify-center">
-                    <Icon className="h-12 w-12 text-primary-foreground/20" />
-                    <div className="absolute inset-0 flex items-center justify-center">
-                      <div className="bg-vote-gold/90 rounded-full p-4 group-hover:scale-110 transition-transform">
-                        <Play className="h-5 w-5 text-accent-foreground fill-accent-foreground" />
-                      </div>
-                    </div>
-                    <span className="absolute bottom-2 right-2 text-[10px] uppercase tracking-widest text-primary-foreground/40 bg-black/40 px-2 py-0.5 rounded">
-                      Coming soon
-                    </span>
+                <div key={s.org} className="bg-card border border-border rounded-xl p-5">
+                  <div className={`inline-flex items-center gap-1.5 px-2 py-1 rounded-full text-xs font-bold mb-2 ${s.accent}`}>
+                    <Icon className="h-3 w-3" />
+                    {s.org}
                   </div>
-                  <div className="p-5">
-                    <div className={`inline-flex items-center gap-1.5 px-2 py-1 rounded-full text-xs font-bold mb-2 ${s.accent}`}>
-                      <Icon className="h-3 w-3" />
-                      {s.org}
-                    </div>
-                    <p className="text-sm text-muted-foreground">{s.topic}</p>
-                  </div>
+                  <p className="text-sm text-muted-foreground">{s.topic}</p>
                 </div>
               );
             })}

@@ -1,7 +1,6 @@
 import { useEffect, useMemo, useState } from "react";
 import { supabase } from "@/integrations/supabase/client";
 import { Input } from "@/components/ui/input";
-import { Button } from "@/components/ui/button";
 import {
   Search, ExternalLink, UserPlus, CheckCircle, MapPin, Users,
   BarChart3, Map, Calculator, TrendingUp, Building, DollarSign,

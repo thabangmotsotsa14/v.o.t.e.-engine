@@ -241,10 +241,11 @@ const Founder = () => {
             })}
           </div>
           <div className="text-center mt-8">
-            <Button asChild variant="outline">
-              <a href="https://www.youtube.com/@leorizen99" target="_blank" rel="noopener noreferrer">
-                <Youtube className="mr-2 h-4 w-4" /> Watch full library on YouTube
-              </a>
+            <Button
+              variant="outline"
+              onClick={() => openExternal("https://www.youtube.com/@leorizen99", "YouTube channel")}
+            >
+              <Youtube className="mr-2 h-4 w-4" /> Watch full library on YouTube
             </Button>
           </div>
         </div>

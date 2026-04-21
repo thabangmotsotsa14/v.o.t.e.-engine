@@ -92,38 +92,38 @@ const Founder = () => {
                 Join me in building first ever online political party, V.O.T.E Party a Consensus-as-a-Service (CaaS) transparency engine pioneering mobile voting in South Africa. Help us reach 1 million members by November 2026 by pledging with your name or donation.
               </p>
               <div className="flex flex-wrap gap-3 mt-5 items-center">
-                <a href="https://www.youtube.com/@leorizen99" target="_blank" rel="noopener noreferrer"
+                <button type="button" onClick={() => openExternal("https://www.youtube.com/@leorizen99", "YouTube")}
                   aria-label="YouTube"
                   className="bg-accent/20 hover:bg-accent/30 text-accent rounded-full p-2 transition-colors">
                   <Youtube className="h-5 w-5" />
-                </a>
-                <a href="https://www.linkedin.com/in/thabang-motsotsa-544a6514a" target="_blank" rel="noopener noreferrer"
+                </button>
+                <button type="button" onClick={() => openExternal("https://www.linkedin.com/in/thabang-motsotsa-544a6514a", "LinkedIn")}
                   aria-label="LinkedIn"
                   className="bg-accent/20 hover:bg-accent/30 text-accent rounded-full p-2 transition-colors">
                   <Linkedin className="h-5 w-5" />
-                </a>
+                </button>
                 <a href="mailto:eugene.motsotsa@gmail.com" aria-label="Email"
                   className="bg-accent/20 hover:bg-accent/30 text-accent rounded-full p-2 transition-colors">
                   <Mail className="h-5 w-5" />
                 </a>
-                <a href="https://www.instagram.com/who_is_scotfree" target="_blank" rel="noopener noreferrer"
+                <button type="button" onClick={() => openExternal("https://www.instagram.com/who_is_scotfree", "Instagram")}
                   aria-label="Instagram"
                   className="bg-accent/20 hover:bg-accent/30 text-accent rounded-full p-2 transition-colors">
                   <Instagram className="h-5 w-5" />
-                </a>
-                <a href="https://x.com/leorizenlive" target="_blank" rel="noopener noreferrer"
+                </button>
+                <button type="button" onClick={() => openExternal("https://x.com/leorizenlive", "X (Twitter)")}
                   aria-label="X (Twitter)"
                   className="bg-accent/20 hover:bg-accent/30 text-accent rounded-full p-2 transition-colors">
                   <svg viewBox="0 0 24 24" className="h-5 w-5" fill="currentColor" aria-hidden="true">
                     <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231 5.45-6.231Zm-1.161 17.52h1.833L7.084 4.126H5.117L17.083 19.77Z"/>
                   </svg>
-                </a>
-                <a href="https://www.amasa.org/team/thabang-motsotsa/" target="_blank" rel="noopener noreferrer"
+                </button>
+                <button type="button" onClick={() => openExternal("https://www.amasa.org/team/thabang-motsotsa/", "AMASA profile")}
                   aria-label="AMASA profile"
                   className="flex items-center gap-2 bg-accent/20 hover:bg-accent/30 text-accent rounded-full px-3 py-2 transition-colors text-xs font-bold">
                   <Building2 className="h-4 w-4" />
                   AMASA
-                </a>
+                </button>
               </div>
             </div>
           </div>

@@ -136,17 +136,16 @@ const Founder = () => {
           {recognition.map((r) => {
             const Icon = r.icon;
             return (
-              <a
+              <button
+                type="button"
                 key={r.label}
-                href={r.href}
-                target="_blank"
-                rel="noopener noreferrer"
+                onClick={() => openExternal(r.href, r.label)}
                 className="flex items-center gap-2 bg-card border border-border rounded-full px-4 py-2 hover:border-vote-gold hover:bg-vote-gold/5 transition-colors"
               >
                 <Icon className="h-4 w-4 text-vote-gold" />
                 <span className="text-sm font-bold text-foreground">{r.label}</span>
                 <ExternalLink className="h-3 w-3 text-muted-foreground" />
-              </a>
+              </button>
             );
           })}
         </div>

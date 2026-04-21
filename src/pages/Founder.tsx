@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import voteLogo from "@/assets/vote-logo-new.png";
 import founderPhoto from "@/assets/founder-photo.png";
 import ContactSection from "@/components/ContactSection";
+import { openExternal } from "@/lib/openExternal";
 
 const experiences = [
   { role: "AMASA Council Member", org: "Membership Portfolio", period: "Feb 2025 – Present" },

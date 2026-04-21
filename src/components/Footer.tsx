@@ -27,7 +27,6 @@ const Footer = () => {
                 { id: "deed", label: "Sign the Deed" },
                 { id: "manifesto", label: "Manifesto" },
                 { id: "donations", label: "Donate" },
-                { id: "contact", label: "Contact" },
               ].map(({ id, label }) => (
                 <button
                   key={id}
@@ -43,15 +42,7 @@ const Footer = () => {
                 rel="noopener noreferrer"
                 className="block text-sm text-vote-gold hover:text-vote-gold/80 transition-colors font-medium"
               >
-                Start Voting Session →
-              </a>
-              <a
-                href="https://apps.apple.com/za/app/iec-mobile-app/id1532013548"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="block text-sm text-primary-foreground/50 hover:text-vote-gold transition-colors"
-              >
-                IEC Mobile App ↗
+                Start a Voting Party →
               </a>
             </div>
           </div>

@@ -146,23 +146,6 @@ const HotspotSection = () => {
           </div>
         )}
 
-        {/* IEC mobile app CTA */}
-        <div className="mt-12 text-center">
-          <Button
-            asChild
-            variant="outline"
-            className="font-bold"
-          >
-            <a
-              href="https://apps.apple.com/za/app/iec-mobile-app/id1532013548"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <ExternalLink className="mr-2 h-4 w-4" />
-              Download the official IEC Mobile App
-            </a>
-          </Button>
-        </div>
       </div>
     </section>
   );

@@ -1,6 +1,5 @@
 import { Button } from "@/components/ui/button";
 import { ArrowDown, Shield } from "lucide-react";
-import voteLogo from "@/assets/vote-logo-new.png";
 import heroBg from "@/assets/hero-bg.jpg";
 
 const HeroSection = () => {
@@ -17,17 +16,7 @@ const HeroSection = () => {
       <div className="absolute inset-0 bg-gradient-hero opacity-85" />
 
       <div className="relative z-10 container mx-auto px-4 text-center pt-28">
-        <div className="animate-fade-in-up">
-          <img
-            src={voteLogo}
-            alt="V.O.T.E. Party Logo"
-            className="mx-auto h-28 w-28 md:h-36 md:w-36 mb-8"
-            width={512}
-            height={512}
-          />
-        </div>
-
-        <h1 className="animate-fade-in-up-delay-1 font-display text-4xl md:text-6xl lg:text-7xl font-bold max-w-5xl mx-auto leading-tight">
+        <h1 className="animate-fade-in-up font-display text-4xl md:text-6xl lg:text-7xl font-bold max-w-5xl mx-auto leading-tight">
           <span className="text-primary-foreground">Power is a </span>
           <span className="text-gradient-gold">Function</span>
           <span className="text-primary-foreground"> of Transparency.</span>

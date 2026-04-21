@@ -12,7 +12,6 @@ import PledgeForm from "@/components/PledgeForm";
 import DonationsSection from "@/components/DonationsSection";
 import JoinFightSection from "@/components/JoinFightSection";
 import GetInvolvedSection from "@/components/GetInvolvedSection";
-import ContactSection from "@/components/ContactSection";
 import IntegritySidebar from "@/components/IntegritySidebar";
 import Footer from "@/components/Footer";
 
@@ -33,7 +32,6 @@ const Index = () => {
       <OurWorkSection />
       <JoinFightSection />
       <GetInvolvedSection />
-      <ContactSection />
       <Footer />
       <IntegritySidebar />
     </div>

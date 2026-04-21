@@ -57,7 +57,7 @@ const Navigation = () => {
             <a href="https://voteparty.vercel.app" target="_blank" rel="noopener noreferrer" className="ml-2">
               <Button size="sm" className="bg-gradient-gold text-accent-foreground font-bold">
                 <ExternalLink className="mr-1.5 h-3.5 w-3.5" />
-                VOTE NOW
+                START A VOTING PARTY
               </Button>
             </a>
           </div>
@@ -89,7 +89,7 @@ const Navigation = () => {
             </Link>
             <a href="https://voteparty.vercel.app" target="_blank" rel="noopener noreferrer" className="col-span-3 mt-2">
               <Button size="sm" className="w-full bg-gradient-gold text-accent-foreground font-bold">
-                <ExternalLink className="mr-1.5 h-3.5 w-3.5" /> START VOTING SESSION
+                <ExternalLink className="mr-1.5 h-3.5 w-3.5" /> START A VOTING PARTY
               </Button>
             </a>
           </div>

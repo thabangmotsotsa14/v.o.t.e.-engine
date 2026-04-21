@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import voteLogo from "@/assets/vote-logo-new.png";
 import founderPhoto from "@/assets/founder-photo.png";
+import ContactSection from "@/components/ContactSection";
 
 const experiences = [
   { role: "AMASA Council Member", org: "Membership Portfolio", period: "Feb 2025 – Present" },
@@ -276,6 +277,9 @@ const Founder = () => {
         </div>
       </section>
 
+      {/* Bookings, partnerships & media — moved from home */}
+      <ContactSection />
+
       {/* CTA */}
       <section className="py-16 md:py-24 bg-gradient-hero">
         <div className="container mx-auto px-4 text-center">
@@ -293,7 +297,7 @@ const Founder = () => {
             </Link>
             <a href="https://voteparty.vercel.app" target="_blank" rel="noopener noreferrer">
               <Button size="lg" variant="outline" className="border-primary-foreground/30 text-primary-foreground font-bold">
-                <ExternalLink className="mr-2 h-4 w-4" />START VOTING SESSION
+                <ExternalLink className="mr-2 h-4 w-4" />START A VOTING PARTY
               </Button>
             </a>
           </div>

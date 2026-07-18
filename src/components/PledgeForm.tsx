@@ -7,11 +7,33 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { Shield, CheckCircle2 } from "lucide-react";
 import { toast } from "sonner";
 import { supabase } from "@/integrations/supabase/client";
+import { z } from "zod";
 
 const provinces = [
   "Eastern Cape", "Free State", "Gauteng", "KwaZulu-Natal",
   "Limpopo", "Mpumalanga", "North West", "Northern Cape", "Western Cape",
 ];
+
+const pledgeSchema = z.object({
+  full_name: z.string().trim().min(2, "Enter your full name").max(100, "Name is too long"),
+  contact_method: z.enum(["email", "mobile"]),
+  email: z.string().trim().email("Invalid email").max(255).optional().nullable(),
+  mobile: z
+    .string()
+    .trim()
+    .regex(/^(\+?27|0)[6-8]\d{8}$/, "Enter a valid SA mobile number")
+    .max(20)
+    .optional()
+    .nullable(),
+  national_id: z
+    .string()
+    .regex(/^\d{13}$/, "ID must be 13 digits")
+    .optional()
+    .nullable(),
+  province: z.string().min(2).max(50),
+}).refine((d) => (d.contact_method === "email" ? !!d.email : !!d.mobile), {
+  message: "Provide the selected contact detail",
+});
 
 const PledgeForm = () => {
   const [agreed, setAgreed] = useState(false);
@@ -44,15 +66,29 @@ const PledgeForm = () => {
     const mobile = contactMethod === "mobile" ? (form.elements.namedItem("mobile") as HTMLInputElement)?.value.trim() : null;
     const nationalId = (form.elements.namedItem("nationalId") as HTMLInputElement)?.value.trim() || null;
 
+    const parsed = pledgeSchema.safeParse({
+      full_name: fullName,
+      contact_method: contactMethod as "email" | "mobile",
+      email: email || null,
+      mobile: mobile || null,
+      national_id: nationalId,
+      province,
+    });
+    if (!parsed.success) {
+      setLoading(false);
+      toast.error(parsed.error.issues[0]?.message ?? "Invalid input");
+      return;
+    }
+
     const { data, error } = await supabase
       .from("pledges")
       .insert({
-        full_name: fullName,
-        contact_method: contactMethod,
-        email,
-        mobile,
-        national_id: nationalId,
-        province,
+        full_name: parsed.data.full_name,
+        contact_method: parsed.data.contact_method,
+        email: parsed.data.email ?? null,
+        mobile: parsed.data.mobile ?? null,
+        national_id: parsed.data.national_id ?? null,
+        province: parsed.data.province,
       })
       .select("transaction_id")
       .single();

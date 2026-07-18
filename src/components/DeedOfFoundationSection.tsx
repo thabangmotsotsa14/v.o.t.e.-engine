@@ -45,8 +45,7 @@ const DeedOfFoundationSection = () => {
   const [signerName, setSignerName] = useState("");
 
   useEffect(() => {
-    supabase.from("deed_of_foundation_signatures").select("*", { count: "exact", head: true })
-      .then(({ count }) => setCount(count ?? 0));
+    supabase.rpc("get_signature_count").then(({ data }) => setCount(Number(data ?? 0)));
   }, [showSuccess]);
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {

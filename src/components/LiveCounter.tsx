@@ -10,22 +10,14 @@ const LiveCounter = () => {
 
   useEffect(() => {
     const fetchCount = async () => {
-      const { count, error } = await supabase
-        .from("pledges")
-        .select("*", { count: "exact", head: true });
-      if (!error && count !== null) setDbCount(count);
+      const { data, error } = await supabase.rpc("get_pledge_count");
+      if (!error && data !== null) setDbCount(Number(data));
     };
     fetchCount();
 
-    // Subscribe to real-time inserts
-    const channel = supabase
-      .channel("pledges-count")
-      .on("postgres_changes", { event: "INSERT", schema: "public", table: "pledges" }, () => {
-        setDbCount((prev) => prev + 1);
-      })
-      .subscribe();
-
-    return () => { supabase.removeChannel(channel); };
+    // Poll every 30s (realtime removed to avoid broadcasting personal data)
+    const interval = setInterval(fetchCount, 30000);
+    return () => clearInterval(interval);
   }, []);
 
   useEffect(() => {

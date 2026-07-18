@@ -250,7 +250,16 @@ export type Database = {
       [_ in never]: never
     }
     Functions: {
-      [_ in never]: never
+      get_donation_totals: {
+        Args: never
+        Returns: {
+          total_amount: number
+          total_count: number
+        }[]
+      }
+      get_member_count: { Args: never; Returns: number }
+      get_pledge_count: { Args: never; Returns: number }
+      get_signature_count: { Args: never; Returns: number }
     }
     Enums: {
       [_ in never]: never

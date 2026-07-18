@@ -32,11 +32,12 @@ const DonationsSection = () => {
   const [totals, setTotals] = useState({ count: 0, amount: 0 });
 
   useEffect(() => {
-    supabase.from("donations").select("amount").then(({ data }) => {
-      if (data) {
+    supabase.rpc("get_donation_totals").then(({ data }) => {
+      const row = Array.isArray(data) ? data[0] : data;
+      if (row) {
         setTotals({
-          count: data.length,
-          amount: data.reduce((sum, d) => sum + Number(d.amount || 0), 0),
+          count: Number(row.total_count ?? 0),
+          amount: Number(row.total_amount ?? 0),
         });
       }
     });

@@ -80,42 +80,40 @@ const PledgeForm = () => {
       return;
     }
 
-    const { data, error } = await supabase
-      .from("pledges")
-      .insert({
-        full_name: parsed.data.full_name,
-        contact_method: parsed.data.contact_method,
-        email: parsed.data.email ?? null,
-        mobile: parsed.data.mobile ?? null,
-        national_id: parsed.data.national_id ?? null,
-        province: parsed.data.province,
-      })
-      .select("transaction_id")
-      .single();
+    const { data, error } = await supabase.functions.invoke("submit-pledge", {
+      body: parsed.data,
+    });
 
     setLoading(false);
 
+    // FunctionsHttpError carries a Response we can read
     if (error) {
-      if (error.code === "23505") {
-        if (error.message.includes("unique_full_name")) {
-          toast.error("This name has already been registered.");
-        } else if (error.message.includes("unique_mobile")) {
-          toast.error("This mobile number has already been registered.");
-        } else if (error.message.includes("unique_email")) {
-          toast.error("This email has already been registered.");
-        } else {
-          toast.error("You have already registered. Duplicate entry detected.");
+      let message = "Something went wrong. Please try again.";
+      try {
+        const ctx = (error as { context?: Response }).context;
+        if (ctx && typeof ctx.json === "function") {
+          const parsedErr = await ctx.json();
+          if (parsedErr?.error) message = parsedErr.error;
         }
-      } else {
-        toast.error("Something went wrong. Please try again.");
-        console.error("Pledge error:", error);
-      }
+      } catch { /* ignore */ }
+      toast.error(message);
       return;
     }
 
-    setTransactionId(data?.transaction_id || "");
+    if (!data?.ok) {
+      toast.error(data?.error ?? "Could not record your pledge. Please try again.");
+      return;
+    }
+
+    setTransactionId(data.transaction_id || "");
     setSubmitted(true);
-    toast.success("Welcome to V.O.T.E.! Your pledge has been recorded.");
+    if (data.email_status === "queued_fallback") {
+      toast.success(
+        "Pledge recorded. Your confirmation email is processing via backup queues and will arrive shortly."
+      );
+    } else {
+      toast.success("Welcome to V.O.T.E.! Your pledge has been recorded.");
+    }
   };
 
   if (submitted) {

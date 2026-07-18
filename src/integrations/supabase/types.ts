@@ -209,6 +209,63 @@ export type Database = {
         }
         Relationships: []
       }
+      pledge_audit_log: {
+        Row: {
+          created_at: string
+          email_status: string | null
+          id: string
+          ip_hash: string | null
+          outcome: string
+          pledge_id: string | null
+          reason: string | null
+          transaction_id: string | null
+          user_agent: string | null
+        }
+        Insert: {
+          created_at?: string
+          email_status?: string | null
+          id?: string
+          ip_hash?: string | null
+          outcome: string
+          pledge_id?: string | null
+          reason?: string | null
+          transaction_id?: string | null
+          user_agent?: string | null
+        }
+        Update: {
+          created_at?: string
+          email_status?: string | null
+          id?: string
+          ip_hash?: string | null
+          outcome?: string
+          pledge_id?: string | null
+          reason?: string | null
+          transaction_id?: string | null
+          user_agent?: string | null
+        }
+        Relationships: []
+      }
+      pledge_rate_limit: {
+        Row: {
+          count: number
+          ip_hash: string
+          updated_at: string
+          window_start: string
+        }
+        Insert: {
+          count?: number
+          ip_hash: string
+          updated_at?: string
+          window_start?: string
+        }
+        Update: {
+          count?: number
+          ip_hash?: string
+          updated_at?: string
+          window_start?: string
+        }
+        Relationships: []
+      }
       pledges: {
         Row: {
           contact_method: string

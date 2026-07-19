@@ -317,6 +317,26 @@ export type Database = {
       get_member_count: { Args: never; Returns: number }
       get_pledge_count: { Args: never; Returns: number }
       get_signature_count: { Args: never; Returns: number }
+      submit_deed_signature: {
+        Args: {
+          p_digital_consent?: boolean
+          p_email?: string
+          p_full_name: string
+          p_id_number_hash: string
+          p_province: string
+        }
+        Returns: string
+      }
+      submit_donation: {
+        Args: {
+          p_amount: number
+          p_email: string
+          p_full_name: string
+          p_message?: string
+          p_purpose: string
+        }
+        Returns: string
+      }
     }
     Enums: {
       [_ in never]: never

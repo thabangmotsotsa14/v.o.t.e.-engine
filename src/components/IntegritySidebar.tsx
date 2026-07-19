@@ -65,7 +65,7 @@ const IntegritySidebar = () => {
             </div>
           </a>
           <a
-            href="https://apps.apple.com/za/app/iec-mobile-app/id1532013548"
+            href="https://www.elections.org.za/"
             target="_blank"
             rel="noopener noreferrer"
             className="flex items-start gap-3 p-3 rounded-lg hover:bg-muted transition-colors group"
@@ -74,8 +74,8 @@ const IntegritySidebar = () => {
               <Shield className="h-4 w-4 text-primary" />
             </div>
             <div>
-              <p className="text-sm font-bold text-foreground group-hover:text-primary">IEC Mobile App</p>
-              <p className="text-xs text-muted-foreground">Official voter tools on your phone</p>
+              <p className="text-sm font-bold text-foreground group-hover:text-primary">IEC Official Portal</p>
+              <p className="text-xs text-muted-foreground">Voter registration & official resources</p>
             </div>
           </a>
         </div>

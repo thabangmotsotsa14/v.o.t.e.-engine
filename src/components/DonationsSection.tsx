@@ -61,24 +61,20 @@ const DonationsSection = () => {
     }
 
     setLoading(true);
-    const { data, error } = await supabase
-      .from("donations")
-      .insert({
-        full_name: parsed.data.full_name,
-        email: parsed.data.email,
-        amount: parsed.data.amount,
-        purpose: parsed.data.purpose,
-        message: parsed.data.message ?? null,
-      })
-      .select("transaction_id")
-      .single();
+    const { data, error } = await supabase.rpc("submit_donation", {
+      p_full_name: parsed.data.full_name,
+      p_email: parsed.data.email,
+      p_amount: parsed.data.amount,
+      p_purpose: parsed.data.purpose,
+      p_message: parsed.data.message ?? null,
+    });
     setLoading(false);
 
     if (error) {
       toast.error("Could not record pledge. Please try again.");
       return;
     }
-    setTxnId(data?.transaction_id ?? "");
+    setTxnId((data as string | null) ?? "");
     setSubmitted(true);
     toast.success("Thank you! Your pledge has been recorded.");
   };

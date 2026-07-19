@@ -68,21 +68,17 @@ const DeedOfFoundationSection = () => {
     setLoading(true);
     const id_number_hash = await sha256Hex(parsed.data.id_number);
 
-    const { data, error } = await supabase
-      .from("deed_of_foundation_signatures")
-      .insert({
-        full_name: parsed.data.full_name,
-        id_number_hash,
-        province: parsed.data.province,
-        email: parsed.data.email || null,
-        digital_consent: true,
-      })
-      .select("transaction_id")
-      .single();
+    const { data, error } = await supabase.rpc("submit_deed_signature", {
+      p_full_name: parsed.data.full_name,
+      p_id_number_hash: id_number_hash,
+      p_province: parsed.data.province,
+      p_email: parsed.data.email || null,
+      p_digital_consent: true,
+    });
 
     if (error) {
       setLoading(false);
-      if (error.code === "23505") {
+      if ((error as { code?: string }).code === "23505" || /duplicate|unique/i.test(error.message)) {
         toast.error("This ID number has already signed the Deed of Foundation.");
       } else {
         toast.error("Could not record signature. Please try again.");
@@ -90,7 +86,7 @@ const DeedOfFoundationSection = () => {
       return;
     }
 
-    const transaction_id = data?.transaction_id ?? "";
+    const transaction_id = (data as string | null) ?? "";
     setTxnId(transaction_id);
     setSignerName(parsed.data.full_name);
 

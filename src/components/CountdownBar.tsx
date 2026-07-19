@@ -9,21 +9,13 @@ const CountdownBar = () => {
 
   useEffect(() => {
     const fetchCount = async () => {
-      const { count: c, error } = await supabase
-        .from("pledges")
-        .select("*", { count: "exact", head: true });
-      if (!error && c !== null) setCount(c);
+      const { data, error } = await supabase.rpc("get_pledge_count");
+      if (!error && data !== null) setCount(Number(data));
     };
     fetchCount();
 
-    const channel = supabase
-      .channel("countdown-bar")
-      .on("postgres_changes", { event: "INSERT", schema: "public", table: "pledges" }, () => {
-        setCount((prev) => prev + 1);
-      })
-      .subscribe();
-
-    return () => { supabase.removeChannel(channel); };
+    const interval = setInterval(fetchCount, 30000);
+    return () => clearInterval(interval);
   }, []);
 
   const now = new Date();

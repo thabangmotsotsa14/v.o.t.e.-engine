@@ -32,19 +32,46 @@ const CATEGORIES = [
   { id: "process", label: "Process Center", color: "text-foreground", bg: "bg-muted" },
 ];
 
+const FALLBACK_RESOURCES: Resource[] = [
+  // Voter Center
+  { id: "fb-voter-1", category: "voter", title: "Register to Vote", description: "Register online with the IEC using your South African ID", target_url: "https://registertovote.elections.org.za/", icon: "UserPlus", search_tags: ["register","voter","registration","sign up","enrol"] },
+  { id: "fb-voter-2", category: "voter", title: "Check Voter Status", description: "Confirm your registration status and voting district", target_url: "https://www.elections.org.za/pw/Voter/Registration-Status", icon: "CheckCircle", search_tags: ["status","check","verify","confirm","registered"] },
+  { id: "fb-voter-3", category: "voter", title: "Find Your Voting Station", description: "Locate your assigned voting station by ID number", target_url: "https://www.elections.org.za/pw/Voter/Voting-Station-Finder", icon: "MapPin", search_tags: ["station","find","location","where","vote"] },
+  { id: "fb-voter-4", category: "voter", title: "Who is My Ward Councillor?", description: "Look up your ward and elected councillor", target_url: "https://www.elections.org.za/pw/Voter/My-Ward-Councillor", icon: "Users", search_tags: ["ward","councillor","representative","local"] },
+  // Election Center
+  { id: "fb-election-1", category: "election", title: "Results & Statistics", description: "Official IEC results portal for all elections", target_url: "https://results.elections.org.za/", icon: "BarChart3", search_tags: ["results","statistics","outcomes","tally"] },
+  { id: "fb-election-2", category: "election", title: "Atlas of Results", description: "Geographic visualisation of election results", target_url: "https://www.elections.org.za/pw/Elections-And-Results/Elections-Atlas", icon: "Map", search_tags: ["atlas","map","geographic","visualisation"] },
+  { id: "fb-election-3", category: "election", title: "Seat Calculation", description: "How seats are allocated under proportional representation", target_url: "https://www.elections.org.za/pw/Elections-And-Results/Seat-Calculation-Detail", icon: "Calculator", search_tags: ["seats","calculation","allocation","proportional"] },
+  { id: "fb-election-4", category: "election", title: "Voters' Roll Statistics", description: "National voter registration statistics", target_url: "https://www.elections.org.za/pw/Voter/Voters-Roll", icon: "TrendingUp", search_tags: ["roll","statistics","demographics","registered","voters"] },
+  // Party Center
+  { id: "fb-party-1", category: "party", title: "Party Registration Statistics", description: "List of all registered political parties in SA", target_url: "https://www.elections.org.za/pw/Parties-And-Candidates/Registered-Parties", icon: "Building", search_tags: ["parties","registered","statistics","political"] },
+  { id: "fb-party-2", category: "party", title: "Political Funding Declarations", description: "Public and private funding disclosures", target_url: "https://www.elections.org.za/pw/Parties-And-Candidates/Party-Funding", icon: "DollarSign", search_tags: ["funding","declarations","private","public","donations"] },
+  { id: "fb-party-3", category: "party", title: "Contesting Elections", description: "Candidate nomination requirements and process", target_url: "https://www.elections.org.za/pw/Parties-And-Candidates/Contest-Elections", icon: "Award", search_tags: ["contest","candidate","nomination","elections"] },
+  { id: "fb-party-4", category: "party", title: "Register a New Party", description: "Annexure 1 requirements and the R5,000 fee", target_url: "https://www.elections.org.za/pw/Parties-And-Candidates/Register-A-New-Party", icon: "FileText", search_tags: ["register","party","annexure","founding","new party"] },
+  // Process Center
+  { id: "fb-process-1", category: "process", title: "How Voting Works", description: "Step-by-step guide to casting your ballot", target_url: "https://www.elections.org.za/pw/Voter/How-Does-Voting-Work", icon: "BookOpen", search_tags: ["voting","process","how to","guide","ballot"] },
+  { id: "fb-process-2", category: "process", title: "Counting & Verification", description: "How votes are counted and audited", target_url: "https://www.elections.org.za/pw/Elections-And-Results/Counting-And-Verification", icon: "CheckSquare", search_tags: ["counting","verification","audit","tally"] },
+  { id: "fb-process-3", category: "process", title: "Objections & Disputes", description: "Lodge an objection or electoral complaint", target_url: "https://www.elections.org.za/pw/About-Us/Electoral-Court-South-Africa", icon: "Scale", search_tags: ["objections","disputes","complaints","court"] },
+  { id: "fb-process-4", category: "process", title: "Observers & Party Agents", description: "Become an accredited election observer", target_url: "https://www.elections.org.za/pw/Elections-And-Results/Observers", icon: "Eye", search_tags: ["observer","agent","accreditation","monitor"] },
+  // V.O.T.E. Party Facilitation
+  { id: "fb-party-vote", category: "party", title: "Start a Voting Session", description: "Launch a V.O.T.E. Party facilitated voting session", target_url: "https://voteparty.vercel.app", icon: "CheckSquare", search_tags: ["vote","voting session","facilitation","voteparty","start"] },
+];
+
 const HotspotSection = () => {
-  const [resources, setResources] = useState<Resource[]>([]);
+  const [resources, setResources] = useState<Resource[]>(FALLBACK_RESOURCES);
   const [query, setQuery] = useState("");
   const [activeCategory, setActiveCategory] = useState<string>("voter");
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     supabase
       .from("hotspot_metadata")
       .select("*")
       .order("display_order", { ascending: true })
-      .then(({ data }) => {
-        if (data) setResources(data as Resource[]);
+      .then(({ data, error }) => {
+        if (!error && data && data.length > 0) {
+          setResources(data as Resource[]);
+        }
         setLoading(false);
       });
   }, []);

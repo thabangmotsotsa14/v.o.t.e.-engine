@@ -6,43 +6,51 @@
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 220 30% 10%;
+    /* Canvas & Page Backgrounds */
+    --background: 0 0% 98%;
+    --foreground: 200 8% 11%;
 
+    /* Cards & Surface Elements */
     --card: 0 0% 100%;
-    --card-foreground: 220 30% 10%;
+    --card-foreground: 200 8% 11%;
 
+    /* Popover & Modals */
     --popover: 0 0% 100%;
-    --popover-foreground: 220 30% 10%;
+    --popover-foreground: 200 8% 11%;
 
-    --primary: 152 45% 28%;
+    /* Primary Actions (V.O.T.E. Deep Forest Green #1E4D3B) */
+    --primary: 158 44% 21%;
     --primary-foreground: 0 0% 100%;
 
-    --secondary: 210 20% 96%;
-    --secondary-foreground: 220 30% 10%;
+    /* Secondary Elements & Highlights (Metallic Gold #D4AF37) */
+    --secondary: 45 64% 52%;
+    --secondary-foreground: 200 8% 11%;
 
-    --muted: 210 20% 96%;
-    --muted-foreground: 220 10% 46%;
+    /* Muted Text & Backgrounds */
+    --muted: 158 15% 94%;
+    --muted-foreground: 200 8% 40%;
 
-    --accent: 43 85% 55%;
-    --accent-foreground: 220 30% 10%;
+    /* Accent Hover & Active States */
+    --accent: 45 64% 52%;
+    --accent-foreground: 200 8% 11%;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 210 20% 90%;
-    --input: 210 20% 90%;
-    --ring: 152 45% 28%;
+    /* Borders & Inputs */
+    --border: 214 15% 91%;
+    --input: 214 15% 91%;
+    --ring: 158 44% 21%;
 
     --radius: 0.75rem;
 
     /* Custom V.O.T.E tokens */
-    --vote-green: 152 45% 28%;
-    --vote-green-light: 152 35% 45%;
-    --vote-navy: 220 40% 13%;
-    --vote-gold: 43 85% 55%;
-    --vote-gold-light: 43 90% 65%;
-    --vote-surface: 210 20% 98%;
+    --vote-green: 158 44% 21%;
+    --vote-green-light: 158 34% 38%;
+    --vote-navy: 158 30% 10%;
+    --vote-gold: 45 64% 52%;
+    --vote-gold-light: 45 70% 64%;
+    --vote-surface: 158 15% 96%;
 
     --sidebar-background: 0 0% 98%;
     --sidebar-foreground: 240 5.3% 26.1%;
@@ -52,6 +60,35 @@
     --sidebar-accent-foreground: 240 5.9% 10%;
     --sidebar-border: 220 13% 91%;
     --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  .dark {
+    --background: 158 30% 6%;
+    --foreground: 0 0% 98%;
+    --card: 158 25% 9%;
+    --card-foreground: 0 0% 98%;
+    --popover: 158 25% 9%;
+    --popover-foreground: 0 0% 98%;
+    --primary: 158 44% 25%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 45 64% 52%;
+    --secondary-foreground: 0 0% 100%;
+    --muted: 158 20% 15%;
+    --muted-foreground: 158 10% 70%;
+    --accent: 45 64% 52%;
+    --accent-foreground: 158 30% 6%;
+    --destructive: 0 62.8% 40%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 158 20% 18%;
+    --input: 158 20% 18%;
+    --ring: 158 44% 25%;
+
+    --vote-green: 158 44% 25%;
+    --vote-green-light: 158 34% 42%;
+    --vote-navy: 158 30% 6%;
+    --vote-gold: 45 64% 52%;
+    --vote-gold-light: 45 70% 64%;
+    --vote-surface: 158 25% 9%;
   }
 }
 
@@ -70,17 +107,17 @@
 @layer utilities {
   .text-gradient-gold {
     @apply bg-clip-text text-transparent;
-    background-image: linear-gradient(135deg, hsl(43, 85%, 55%), hsl(43, 90%, 65%));
+    background-image: linear-gradient(135deg, hsl(var(--vote-gold)), hsl(var(--vote-gold-light)));
   }
   .text-gradient-green {
     @apply bg-clip-text text-transparent;
-    background-image: linear-gradient(135deg, hsl(152, 45%, 28%), hsl(152, 35%, 45%));
+    background-image: linear-gradient(135deg, hsl(var(--vote-green)), hsl(var(--vote-green-light)));
   }
   .bg-gradient-hero {
-    background: linear-gradient(135deg, hsl(220, 40%, 13%) 0%, hsl(220, 35%, 18%) 50%, hsl(152, 30%, 15%) 100%);
+    background: linear-gradient(135deg, hsl(158, 30%, 8%) 0%, hsl(158, 32%, 13%) 50%, hsl(158, 38%, 17%) 100%);
   }
   .bg-gradient-gold {
-    background: linear-gradient(135deg, hsl(43, 85%, 55%), hsl(43, 90%, 65%));
+    background: linear-gradient(135deg, hsl(var(--vote-gold)), hsl(var(--vote-gold-light)));
   }
   .animate-count-up {
     animation: countPulse 2s ease-in-out infinite;

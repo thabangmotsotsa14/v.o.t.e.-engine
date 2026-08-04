@@ -53,6 +53,12 @@ const config: Config = {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
+        "vote-green": "hsl(var(--vote-green))",
+        "vote-green-light": "hsl(var(--vote-green-light))",
+        "vote-navy": "hsl(var(--vote-navy))",
+        "vote-gold": "hsl(var(--vote-gold))",
+        "vote-gold-light": "hsl(var(--vote-gold-light))",
+        "vote-surface": "hsl(var(--vote-surface))",
       },
       borderRadius: {
         lg: "var(--radius)",

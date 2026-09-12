@@ -288,12 +288,12 @@ const Founder = () => {
             Secure, Transparent, Auditable Voting for South Africa
           </h2>
           <p className="text-primary-foreground/70 mb-8 max-w-xl mx-auto">
-            Join the movement. Sign the Deed of Foundation. Start a voting session.
+            Join the movement. Pledge your support. Start a voting session.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link to="/#deed">
+            <Link to="/#pledge">
               <Button size="lg" className="bg-gradient-gold text-accent-foreground font-display font-bold text-lg px-8">
-                SIGN THE DEED OF FOUNDATION
+                PLEDGE YOUR SUPPORT
               </Button>
             </Link>
             <a href="https://voteparty.vercel.app" target="_blank" rel="noopener noreferrer">

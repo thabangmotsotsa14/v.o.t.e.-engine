@@ -1,14 +1,12 @@
 import { useState } from "react";
-import { Menu, X, Home, FileText, Scroll, Heart, Search, Mail, ExternalLink, User } from "lucide-react";
+import { Menu, X, FileText, Search, Mail, ExternalLink, User, Building2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
-import voteLogo from "@/assets/vote-logo-new.png";
+import voteLogo from "@/assets/vote-party-logo.png.asset.json";
 
 const navItems = [
   { id: "hotspot", label: "Hotspot", icon: Search },
   { id: "manifesto", label: "Manifesto", icon: FileText },
-  { id: "deed", label: "Sign Deed", icon: Scroll },
-  { id: "donations", label: "Donate", icon: Heart },
   { id: "contact", label: "Contact", icon: Mail },
 ] as const;
 
@@ -21,14 +19,11 @@ const Navigation = () => {
   };
 
   return (
-    <nav className="fixed top-8 left-0 right-0 z-50 bg-background/80 backdrop-blur-lg border-b border-border">
+    <nav className="fixed top-8 left-0 right-0 z-50 bg-background/85 backdrop-blur-xl border-b border-border">
       <div className="container mx-auto px-4 lg:px-8">
         <div className="flex items-center justify-between h-16">
           <button onClick={() => scrollTo("hero")} aria-label="Home" className="flex items-center gap-2">
-            <img src={voteLogo} alt="V.O.T.E. Party" className="h-10 w-10" />
-            <span className="font-display font-bold text-lg text-foreground hidden sm:inline">
-              V.O.T.E.
-            </span>
+            <img src={voteLogo.url} alt="V.O.T.E. Party" className="h-11 w-36 rounded-md object-cover object-center mix-blend-multiply" />
           </button>
 
           {/* Desktop: icon-led nav */}
@@ -45,6 +40,15 @@ const Navigation = () => {
                 <span className="hidden lg:inline">{label}</span>
               </button>
             ))}
+            <Link
+              to="/municipal-insights"
+              aria-label="Municipal Insights"
+              title="Municipal Insights"
+              className="flex items-center gap-1.5 px-3 py-2 rounded-lg text-sm font-medium text-muted-foreground hover:text-foreground hover:bg-muted transition-colors"
+            >
+              <Building2 className="h-4 w-4" />
+              <span className="hidden lg:inline">Municipal Insights</span>
+            </Link>
             <Link
               to="/founder"
               aria-label="Founder"
@@ -79,6 +83,14 @@ const Navigation = () => {
                 <span className="text-xs">{label}</span>
               </button>
             ))}
+            <Link
+              to="/municipal-insights"
+              onClick={() => setIsOpen(false)}
+              className="flex flex-col items-center gap-1 p-3 rounded-lg bg-muted text-muted-foreground hover:text-foreground"
+            >
+              <Building2 className="h-5 w-5" />
+              <span className="text-xs">Municipal</span>
+            </Link>
             <Link
               to="/founder"
               onClick={() => setIsOpen(false)}

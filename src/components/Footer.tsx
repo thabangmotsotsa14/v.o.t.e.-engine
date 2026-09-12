@@ -24,9 +24,7 @@ const Footer = () => {
             <div className="space-y-2">
               {[
                 { id: "hotspot", label: "V.O.T.E. Hotspot" },
-                { id: "deed", label: "Sign the Deed" },
                 { id: "manifesto", label: "Manifesto" },
-                { id: "donations", label: "Donate" },
               ].map(({ id, label }) => (
                 <button
                   key={id}

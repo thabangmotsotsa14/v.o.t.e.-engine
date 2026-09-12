@@ -7,9 +7,7 @@ import LiveCounter from "@/components/LiveCounter";
 import ManifestoSection from "@/components/ManifestoSection";
 import LegalFrameworkSection from "@/components/LegalFrameworkSection";
 import SouthAfricaSection from "@/components/SouthAfricaSection";
-import DeedOfFoundationSection from "@/components/DeedOfFoundationSection";
 import PledgeForm from "@/components/PledgeForm";
-import DonationsSection from "@/components/DonationsSection";
 import JoinFightSection from "@/components/JoinFightSection";
 import GetInvolvedSection from "@/components/GetInvolvedSection";
 import IntegritySidebar from "@/components/IntegritySidebar";
@@ -23,12 +21,10 @@ const Index = () => {
       <HeroSection />
       <HotspotSection />
       <LiveCounter />
-      <DeedOfFoundationSection />
       <ManifestoSection />
       <LegalFrameworkSection />
       <SouthAfricaSection />
       <PledgeForm />
-      <DonationsSection />
       <OurWorkSection />
       <JoinFightSection />
       <GetInvolvedSection />

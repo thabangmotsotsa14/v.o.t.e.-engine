@@ -1,6 +1,6 @@
 import { useMemo, useState } from "react";
 import { Link } from "react-router-dom";
-import { ArrowLeft, BarChart3, Building2, CheckCircle2, ExternalLink, Gauge, MapPin, Search, TrendingDown, TrendingUp, Users, WalletCards, Waves, Zap, Trash2, Droplets } from "lucide-react";
+import { ArrowLeft, BarChart3, Building2, CheckCircle2, ExternalLink, Gauge, MapPin, Search, TrendingDown, TrendingUp, Users, Waves, Zap, Trash2, Droplets } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Progress } from "@/components/ui/progress";

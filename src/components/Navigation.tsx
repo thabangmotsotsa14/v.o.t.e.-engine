@@ -23,7 +23,8 @@ const Navigation = () => {
       <div className="container mx-auto px-4 lg:px-8">
         <div className="flex items-center justify-between h-16">
           <button onClick={() => scrollTo("hero")} aria-label="Home" className="flex items-center gap-2">
-            <img src={voteLogo.url} alt="V.O.T.E. Party" className="h-11 w-36 rounded-md object-cover object-center mix-blend-multiply" />
+            <img src={voteLogo.url} alt="V.O.T.E. Party" className="h-11 w-11 rounded-full object-cover mix-blend-multiply" />
+            <span className="hidden font-display text-lg font-bold text-foreground sm:inline">V.O.T.E. Party</span>
           </button>
 
           {/* Desktop: icon-led nav */}

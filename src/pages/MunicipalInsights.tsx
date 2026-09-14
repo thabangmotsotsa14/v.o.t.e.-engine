@@ -1,6 +1,6 @@
 import { useMemo, useState } from "react";
-import { Link } from "react-router-dom";
-import { ArrowLeft, BarChart3, Building2, CheckCircle2, ExternalLink, Gauge, MapPin, Search, TrendingDown, TrendingUp, Users, Waves, Zap, Trash2, Droplets } from "lucide-react";
+import { BarChart3, Building2, CheckCircle2, ExternalLink, Gauge, MapPin, Search, TrendingDown, TrendingUp, Users, Waves, Zap, Trash2, Droplets } from "lucide-react";
+import Navigation from "@/components/Navigation";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Progress } from "@/components/ui/progress";
@@ -61,14 +61,9 @@ const MunicipalInsights = () => {
 
   return (
     <div className="min-h-screen bg-background">
-      <header className="sticky top-0 z-40 border-b border-border bg-background/90 backdrop-blur-xl">
-        <div className="container flex h-16 items-center justify-between px-4 lg:px-8">
-          <Link to="/" className="flex items-center gap-3" aria-label="Return to V.O.T.E. Party home"><img src={logoAsset.url} alt="V.O.T.E. Party" className="h-11 w-11 rounded-full object-cover" /><span className="hidden font-display font-bold text-foreground sm:inline">V.O.T.E. Party · Municipal Insights</span></Link>
-          <Button asChild variant="ghost" size="sm"><Link to="/"><ArrowLeft className="h-4 w-4" />Home</Link></Button>
-        </div>
-      </header>
+      <Navigation />
 
-      <main>
+      <main className="pt-16">
         <section className="border-b border-border bg-vote-navy py-14 md:py-20">
           <div className="container px-4 lg:px-8">
             <div className="max-w-3xl">

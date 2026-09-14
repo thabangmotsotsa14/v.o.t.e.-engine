@@ -1,7 +1,8 @@
 import { useState } from "react";
 import { Menu, X, FileText, Search, Mail, ExternalLink, User, Building2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import { cn } from "@/lib/utils";
 import voteLogo from "@/assets/vote-party-logo.png.asset.json";
 
 const navItems = [
@@ -12,18 +13,32 @@ const navItems = [
 
 const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const location = useLocation();
+  const navigate = useNavigate();
+  const isHome = location.pathname === "/";
 
   const scrollTo = (id: string) => {
-    document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
     setIsOpen(false);
+    if (!isHome) {
+      navigate(`/#${id}`);
+      return;
+    }
+    document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
   };
 
   return (
-    <nav className="fixed top-8 left-0 right-0 z-50 bg-background/85 backdrop-blur-xl border-b border-border">
+    <nav
+      className={cn(
+        "fixed left-0 right-0 z-50 bg-background/70 backdrop-blur-xl border-b border-border",
+        isHome ? "top-8" : "top-0",
+      )}
+    >
       <div className="container mx-auto px-4 lg:px-8">
         <div className="flex items-center justify-between h-16">
           <button onClick={() => scrollTo("hero")} aria-label="Home" className="flex items-center gap-2">
-            <img src={voteLogo.url} alt="V.O.T.E. Party" className="h-11 w-11 rounded-full object-cover mix-blend-multiply" />
+            <span className="flex h-11 w-11 items-center justify-center rounded-full bg-background/40 backdrop-blur-md">
+              <img src={voteLogo.url} alt="V.O.T.E. Party" className="h-11 w-11 rounded-full object-cover mix-blend-multiply" />
+            </span>
             <span className="hidden font-display text-lg font-bold text-foreground sm:inline">V.O.T.E. Party</span>
           </button>
 
@@ -45,7 +60,11 @@ const Navigation = () => {
               to="/municipal-insights"
               aria-label="Municipal Insights"
               title="Municipal Insights"
-              className="flex items-center gap-1.5 px-3 py-2 rounded-lg text-sm font-medium text-muted-foreground hover:text-foreground hover:bg-muted transition-colors"
+              aria-current={location.pathname === "/municipal-insights" ? "page" : undefined}
+              className={cn(
+                "flex items-center gap-1.5 px-3 py-2 rounded-lg text-sm font-medium transition-colors hover:text-foreground hover:bg-muted",
+                location.pathname === "/municipal-insights" ? "bg-muted text-foreground" : "text-muted-foreground",
+              )}
             >
               <Building2 className="h-4 w-4" />
               <span className="hidden lg:inline">Municipal Insights</span>
@@ -54,7 +73,11 @@ const Navigation = () => {
               to="/founder"
               aria-label="Founder"
               title="Founder"
-              className="flex items-center gap-1.5 px-3 py-2 rounded-lg text-sm font-medium text-muted-foreground hover:text-foreground hover:bg-muted transition-colors"
+              aria-current={location.pathname === "/founder" ? "page" : undefined}
+              className={cn(
+                "flex items-center gap-1.5 px-3 py-2 rounded-lg text-sm font-medium transition-colors hover:text-foreground hover:bg-muted",
+                location.pathname === "/founder" ? "bg-muted text-foreground" : "text-muted-foreground",
+              )}
             >
               <User className="h-4 w-4" />
               <span className="hidden lg:inline">Founder</span>

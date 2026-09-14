@@ -105,7 +105,8 @@ Deno.serve(async (req) => {
         : reason === 'duplicate_mobile' ? 'This mobile number has already been registered.'
         : reason === 'duplicate_email' ? 'This email has already been registered.'
         : 'You have already registered.'
-      return new Response(JSON.stringify({ error: msg, code: 'duplicate' }), { status: 409, headers: jsonHeaders })
+      // Return 200 so the client SDK does not throw; the form reads `ok: false`.
+      return new Response(JSON.stringify({ ok: false, error: msg, code: 'duplicate' }), { status: 200, headers: jsonHeaders })
     }
     console.error('pledge insert error', error)
     await logAudit({ outcome: 'error', reason: error.message?.slice(0, 200), ip_hash: ipHash, user_agent: userAgent })

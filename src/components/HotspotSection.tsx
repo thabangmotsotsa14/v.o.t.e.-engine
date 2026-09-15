@@ -79,9 +79,32 @@ const HotspotSection = () => {
       });
   }, []);
 
+  const shareResource = async (r: Resource) => {
+    try {
+      if (navigator.share) {
+        await navigator.share({ title: r.title, text: r.description ?? "", url: r.target_url });
+        return;
+      }
+      await navigator.clipboard.writeText(r.target_url);
+      toast.success("Link copied", { description: r.title });
+    } catch {
+      toast.error("Could not share this link. Please copy it manually.");
+    }
+  };
+
+  const subscribe = () => {
+    const target = document.getElementById("pledge") ?? document.getElementById("join");
+    if (target) {
+      target.scrollIntoView({ behavior: "smooth" });
+      toast("Add your details below to get V.O.T.E. updates.");
+    } else {
+      toast("Updates are shared with pledged members. Join from the home page.");
+    }
+  };
+
   const filtered = useMemo(() => {
     const q = query.trim().toLowerCase();
-    if (!q) return resources.filter((r) => r.category === activeCategory);
+    if (!q) return activeCategory === "all" ? resources : resources.filter((r) => r.category === activeCategory);
     return resources.filter((r) => {
       const haystack = [
         r.title, r.description ?? "", ...(r.search_tags ?? []),

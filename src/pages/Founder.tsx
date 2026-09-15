@@ -1,5 +1,6 @@
 import { Youtube, Linkedin, Instagram, Mail, ExternalLink, Award, Play, Mic, Building2, GraduationCap } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { Link } from "react-router-dom";
 import Navigation from "@/components/Navigation";
 import founderPhoto from "@/assets/founder-photo.png";
 import ContactSection from "@/components/ContactSection";

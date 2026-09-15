@@ -1,7 +1,6 @@
-import { ArrowLeft, Youtube, Linkedin, Instagram, Mail, ExternalLink, Award, Play, Mic, Building2, GraduationCap } from "lucide-react";
+import { Youtube, Linkedin, Instagram, Mail, ExternalLink, Award, Play, Mic, Building2, GraduationCap } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Link } from "react-router-dom";
-import voteLogo from "@/assets/vote-logo-new.png";
+import Navigation from "@/components/Navigation";
 import founderPhoto from "@/assets/founder-photo.png";
 import ContactSection from "@/components/ContactSection";
 import { openExternal } from "@/lib/openExternal";
@@ -62,18 +61,7 @@ const speakingEngagements = [
 const Founder = () => {
   return (
     <div className="min-h-screen bg-background">
-      {/* Nav */}
-      <nav className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-lg border-b border-border">
-        <div className="container mx-auto px-4 lg:px-8 flex items-center justify-between h-16">
-          <Link to="/" className="flex items-center gap-2">
-            <img src={voteLogo} alt="V.O.T.E." className="h-10 w-10" />
-            <span className="font-display font-bold text-lg text-foreground">V.O.T.E.</span>
-          </Link>
-          <Link to="/">
-            <Button variant="ghost" size="sm"><ArrowLeft className="mr-2 h-4 w-4" />Back to Home</Button>
-          </Link>
-        </div>
-      </nav>
+      <Navigation />
 
       {/* Hero */}
       <section className="relative pt-16">

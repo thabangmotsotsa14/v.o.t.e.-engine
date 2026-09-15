@@ -7,7 +7,7 @@ import { Progress } from "@/components/ui/progress";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { cn } from "@/lib/utils";
 import { municipalities, type Municipality } from "@/data/municipalities";
-import logoAsset from "@/assets/vote-party-logo.png.asset.json";
+
 
 const personas = ["Existing Resident", "Relocator / Moving", "Civic Auditor"] as const;
 const serviceLabels = [

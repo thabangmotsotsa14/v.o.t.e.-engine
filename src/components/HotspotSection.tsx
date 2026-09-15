@@ -200,12 +200,9 @@ const HotspotSection = () => {
               const Icon = ICONS[r.icon ?? ""] ?? FileText;
               const cat = CATEGORIES.find((c) => c.id === r.category);
               return (
-                <a
+                <div
                   key={r.id}
-                  href={r.target_url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="group bg-card border border-border rounded-xl p-5 hover:border-primary hover:shadow-lg transition-all"
+                  className="group flex flex-col bg-card border border-border rounded-xl p-5 hover:border-primary hover:shadow-lg transition-all"
                 >
                   <div className={cn("w-10 h-10 rounded-lg flex items-center justify-center mb-3", cat?.bg)}>
                     <Icon className={cn("h-5 w-5", cat?.color)} />
@@ -216,10 +213,25 @@ const HotspotSection = () => {
                   {r.description && (
                     <p className="text-sm text-muted-foreground line-clamp-2 mb-3">{r.description}</p>
                   )}
-                  <span className="inline-flex items-center gap-1 text-xs text-primary font-bold">
-                    Open <ExternalLink className="h-3 w-3" />
-                  </span>
-                </a>
+                  <div className="mt-auto flex items-center justify-between pt-2">
+                    <a
+                      href={r.target_url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-1 text-xs text-primary font-bold hover:underline"
+                    >
+                      Open <ExternalLink className="h-3 w-3" />
+                    </a>
+                    <button
+                      type="button"
+                      onClick={() => shareResource(r)}
+                      aria-label={`Share ${r.title}`}
+                      className="rounded-full p-1.5 text-muted-foreground hover:bg-muted hover:text-foreground transition-colors"
+                    >
+                      <Share2 className="h-4 w-4" />
+                    </button>
+                  </div>
+                </div>
               );
             })}
           </div>

@@ -1,3 +1,5 @@
+import { useEffect } from "react";
+import { useLocation } from "react-router-dom";
 import CountdownBar from "@/components/CountdownBar";
 import Navigation from "@/components/Navigation";
 import HeroSection from "@/components/HeroSection";
@@ -14,6 +16,17 @@ import IntegritySidebar from "@/components/IntegritySidebar";
 import Footer from "@/components/Footer";
 
 const Index = () => {
+  const { hash } = useLocation();
+
+  useEffect(() => {
+    if (!hash) return;
+    const target = document.getElementById(hash.slice(1));
+    if (target) {
+      const timer = window.setTimeout(() => target.scrollIntoView({ behavior: "smooth" }), 100);
+      return () => window.clearTimeout(timer);
+    }
+  }, [hash]);
+
   return (
     <div className="min-h-screen">
       <CountdownBar />

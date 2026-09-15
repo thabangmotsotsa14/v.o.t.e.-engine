@@ -1,3 +1,5 @@
+import { useEffect } from "react";
+import { useLocation } from "react-router-dom";
 import CountdownBar from "@/components/CountdownBar";
 import Navigation from "@/components/Navigation";
 import HeroSection from "@/components/HeroSection";

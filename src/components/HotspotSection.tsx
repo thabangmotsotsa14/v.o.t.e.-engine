@@ -130,29 +130,41 @@ const HotspotSection = () => {
         </div>
 
         {/* Search */}
-        <div className="max-w-2xl mx-auto mb-8">
+        <div className="max-w-2xl mx-auto mb-6">
           <div className="relative">
             <Search className="absolute left-4 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
             <Input
               value={query}
               onChange={(e) => setQuery(e.target.value)}
               placeholder="Search: 'register', 'voting station', 'results'..."
-              className="pl-12 h-14 text-base"
+              className="pl-12 pr-12 h-14 text-base"
             />
+            {query && (
+              <button
+                type="button"
+                onClick={() => setQuery("")}
+                aria-label="Clear search"
+                className="absolute right-4 top-1/2 -translate-y-1/2 rounded-full p-1 text-muted-foreground hover:bg-muted hover:text-foreground"
+              >
+                <X className="h-4 w-4" />
+              </button>
+            )}
           </div>
         </div>
 
         {/* Category tabs */}
         {!query && (
-          <div className="flex flex-wrap gap-2 justify-center mb-8">
-            {CATEGORIES.map((c) => (
+          <div className="flex flex-wrap gap-2 justify-center mb-8" role="tablist" aria-label="Resource categories">
+            {[{ id: "all", label: "All Resources" }, ...CATEGORIES].map((c) => (
               <button
                 key={c.id}
+                role="tab"
+                aria-selected={activeCategory === c.id}
                 onClick={() => setActiveCategory(c.id)}
                 className={cn(
                   "px-4 py-2 rounded-full text-sm font-bold transition-all",
                   activeCategory === c.id
-                    ? "bg-foreground text-background"
+                    ? "bg-foreground text-background shadow-md"
                     : "bg-muted text-muted-foreground hover:bg-muted/70"
                 )}
               >
@@ -162,11 +174,26 @@ const HotspotSection = () => {
           </div>
         )}
 
+        <div className="mb-6 flex flex-wrap items-center justify-center gap-3">
+          <p className="text-sm text-muted-foreground">
+            {filtered.length} resource{filtered.length === 1 ? "" : "s"} shown
+          </p>
+          <Button type="button" size="sm" variant="outline" onClick={subscribe}>
+            <Bell className="mr-1.5 h-3.5 w-3.5" /> Subscribe to Updates
+          </Button>
+        </div>
+
         {/* Results grid */}
         {loading ? (
           <p className="text-center text-muted-foreground">Loading IEC resources…</p>
         ) : filtered.length === 0 ? (
-          <p className="text-center text-muted-foreground">No resources match your search.</p>
+          <div className="mx-auto max-w-md rounded-xl border border-border bg-card p-8 text-center">
+            <p className="font-display font-bold text-foreground">No resources match your search.</p>
+            <p className="mt-1 text-sm text-muted-foreground">Try a different word, or browse all resources.</p>
+            <Button className="mt-4" size="sm" onClick={() => { setQuery(""); setActiveCategory("all"); }}>
+              Show all resources
+            </Button>
+          </div>
         ) : (
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 max-w-6xl mx-auto">
             {filtered.map((r) => {

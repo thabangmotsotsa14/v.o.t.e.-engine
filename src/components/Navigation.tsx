@@ -3,7 +3,6 @@ import { Menu, X, FileText, Search, Mail, ExternalLink, User, Building2 } from "
 import { Button } from "@/components/ui/button";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { cn } from "@/lib/utils";
-import voteLogo from "@/assets/vote-party-logo.png.asset.json";
 
 const navItems = [
   { id: "hotspot", label: "Hotspot", icon: Search },
@@ -37,7 +36,14 @@ const Navigation = () => {
         <div className="flex items-center justify-between h-16">
           <button onClick={() => scrollTo("hero")} aria-label="Home" className="flex items-center gap-2">
             <span className="flex h-11 w-11 items-center justify-center rounded-full bg-background/40 backdrop-blur-md">
-              <img src={voteLogo.url} alt="V.O.T.E. Party" className="h-11 w-11 rounded-full object-cover mix-blend-multiply" />
+              <img
+                src="/logo.png"
+                alt="V.O.T.E Party Logo"
+                className="h-11 w-11 rounded-full object-cover mix-blend-multiply"
+                onError={(e) => {
+                  e.currentTarget.style.display = "none";
+                }}
+              />
             </span>
             <span className="hidden font-display text-lg font-bold text-foreground sm:inline">V.O.T.E. Party</span>
           </button>

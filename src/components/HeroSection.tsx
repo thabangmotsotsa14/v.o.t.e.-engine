@@ -1,6 +1,5 @@
 import { Button } from "@/components/ui/button";
 import { ArrowDown, Shield } from "lucide-react";
-import heroVideo from "@/assets/vote-party-welcome.mp4.asset.json";
 
 const HeroSection = () => {
   const scrollToPledge = () => {
@@ -8,7 +7,7 @@ const HeroSection = () => {
   };
 
   return (
-    <section id="hero" className="relative min-h-screen flex items-center justify-center overflow-hidden">
+    <section id="hero" className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-hero">
       <video
         className="absolute inset-0 h-full w-full object-cover"
         autoPlay
@@ -16,9 +15,10 @@ const HeroSection = () => {
         muted
         playsInline
         preload="metadata"
+        poster="/logo.png"
         aria-hidden="true"
       >
-        <source src={heroVideo.url} type="video/mp4" />
+        <source src="/videos/hero-bg.mp4" type="video/mp4" />
       </video>
       <div className="absolute inset-0 bg-gradient-hero opacity-85" />
 

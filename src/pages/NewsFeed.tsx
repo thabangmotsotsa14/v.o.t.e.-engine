@@ -1,5 +1,6 @@
 import { useMemo, useState } from "react";
-import { Newspaper, Search, ExternalLink, CalendarDays, Tag } from "lucide-react";
+import { Newspaper, Search, ExternalLink, CalendarDays, Tag, Zap } from "lucide-react";
+import ArticleSummarizerModal, { type SummarizerPreset } from "@/components/ArticleSummarizerModal";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import { Input } from "@/components/ui/input";
@@ -46,6 +47,10 @@ const NewsFeed = () => {
               base for transparent civic oversight.
             </p>
           </header>
+
+          <div className="mt-8">
+            <ArticleSummarizerModal preset={preset} />
+          </div>
 
           {/* Search */}
           <div className="mt-8 flex flex-col gap-3 sm:flex-row">
@@ -128,12 +133,24 @@ const NewsFeed = () => {
                   </CardHeader>
                   <CardContent className="flex flex-1 flex-col justify-between gap-4">
                     <CardDescription className="text-sm">{a.summary}</CardDescription>
-                    <a href={a.url} target="_blank" rel="noopener noreferrer" className="inline-flex">
-                      <Button variant="outline" size="sm">
-                        Read on Stats SA
-                        <ExternalLink className="ml-1.5 h-3.5 w-3.5" />
+                    <div className="flex flex-wrap gap-2">
+                      <a href={a.url} target="_blank" rel="noopener noreferrer" className="inline-flex">
+                        <Button variant="outline" size="sm">
+                          Read on Stats SA
+                          <ExternalLink className="ml-1.5 h-3.5 w-3.5" />
+                        </Button>
+                      </a>
+                      <Button
+                        size="sm"
+                        variant="secondary"
+                        onClick={() => {
+                          setPreset({ text: `${a.title}\n\n${a.summary}\n\nSource: ${a.url}`, nonce: Date.now() });
+                          document.getElementById("summarizer")?.scrollIntoView({ behavior: "smooth" });
+                        }}
+                      >
+                        <Zap className="mr-1.5 h-3.5 w-3.5" /> Summarize
                       </Button>
-                    </a>
+                    </div>
                   </CardContent>
                 </Card>
               ))}

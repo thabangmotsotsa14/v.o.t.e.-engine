@@ -76,17 +76,17 @@ const Navigation = () => {
               <span className="hidden lg:inline">Municipal Insights</span>
             </Link>
             <Link
-              to="/news-feed"
-              aria-label="News Feed"
-              title="News Feed"
-              aria-current={location.pathname === "/news-feed" ? "page" : undefined}
+              to="/news"
+              aria-label="News & AI Summarizer"
+              title="News & AI Summarizer"
+              aria-current={location.pathname.startsWith("/news") ? "page" : undefined}
               className={cn(
                 "flex items-center gap-1.5 px-3 py-2 rounded-lg text-sm font-medium transition-colors hover:text-foreground hover:bg-muted",
-                location.pathname === "/news-feed" ? "bg-muted text-foreground" : "text-muted-foreground",
+                location.pathname.startsWith("/news") ? "bg-muted text-foreground" : "text-muted-foreground",
               )}
             >
               <Newspaper className="h-4 w-4" />
-              <span className="hidden lg:inline">News Feed</span>
+              <span className="hidden lg:inline">News &amp; AI Summarizer</span>
             </Link>
             <Link
               to="/founder"
@@ -135,7 +135,7 @@ const Navigation = () => {
               <span className="text-xs">Municipal</span>
             </Link>
             <Link
-              to="/news-feed"
+              to="/news"
               onClick={() => setIsOpen(false)}
               className="flex flex-col items-center gap-1 p-3 rounded-lg bg-muted text-muted-foreground hover:text-foreground"
             >

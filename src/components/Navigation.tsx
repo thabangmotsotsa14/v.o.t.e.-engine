@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Menu, X, FileText, Search, Mail, ExternalLink, User, Building2 } from "lucide-react";
+import { Menu, X, FileText, Search, Mail, ExternalLink, User, Building2, Newspaper } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { cn } from "@/lib/utils";
@@ -76,6 +76,19 @@ const Navigation = () => {
               <span className="hidden lg:inline">Municipal Insights</span>
             </Link>
             <Link
+              to="/news-feed"
+              aria-label="News Feed"
+              title="News Feed"
+              aria-current={location.pathname === "/news-feed" ? "page" : undefined}
+              className={cn(
+                "flex items-center gap-1.5 px-3 py-2 rounded-lg text-sm font-medium transition-colors hover:text-foreground hover:bg-muted",
+                location.pathname === "/news-feed" ? "bg-muted text-foreground" : "text-muted-foreground",
+              )}
+            >
+              <Newspaper className="h-4 w-4" />
+              <span className="hidden lg:inline">News Feed</span>
+            </Link>
+            <Link
               to="/founder"
               aria-label="Founder"
               title="Founder"
@@ -120,6 +133,14 @@ const Navigation = () => {
             >
               <Building2 className="h-5 w-5" />
               <span className="text-xs">Municipal</span>
+            </Link>
+            <Link
+              to="/news-feed"
+              onClick={() => setIsOpen(false)}
+              className="flex flex-col items-center gap-1 p-3 rounded-lg bg-muted text-muted-foreground hover:text-foreground"
+            >
+              <Newspaper className="h-5 w-5" />
+              <span className="text-xs">News</span>
             </Link>
             <Link
               to="/founder"

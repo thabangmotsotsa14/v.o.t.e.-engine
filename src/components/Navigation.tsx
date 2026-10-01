@@ -135,6 +135,14 @@ const Navigation = () => {
               <span className="text-xs">Municipal</span>
             </Link>
             <Link
+              to="/news-feed"
+              onClick={() => setIsOpen(false)}
+              className="flex flex-col items-center gap-1 p-3 rounded-lg bg-muted text-muted-foreground hover:text-foreground"
+            >
+              <Newspaper className="h-5 w-5" />
+              <span className="text-xs">News</span>
+            </Link>
+            <Link
               to="/founder"
               onClick={() => setIsOpen(false)}
               className="flex flex-col items-center gap-1 p-3 rounded-lg bg-muted text-muted-foreground hover:text-foreground"

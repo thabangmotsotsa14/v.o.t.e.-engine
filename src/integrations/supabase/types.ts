@@ -209,6 +209,45 @@ export type Database = {
         }
         Relationships: []
       }
+      municipal_ratings: {
+        Row: {
+          comment: string | null
+          created_at: string
+          electricity_rating: number | null
+          id: string
+          municipality_id: string
+          municipality_name: string
+          refuse_rating: number | null
+          roads_rating: number | null
+          upvotes: number
+          water_rating: number | null
+        }
+        Insert: {
+          comment?: string | null
+          created_at?: string
+          electricity_rating?: number | null
+          id?: string
+          municipality_id: string
+          municipality_name: string
+          refuse_rating?: number | null
+          roads_rating?: number | null
+          upvotes?: number
+          water_rating?: number | null
+        }
+        Update: {
+          comment?: string | null
+          created_at?: string
+          electricity_rating?: number | null
+          id?: string
+          municipality_id?: string
+          municipality_name?: string
+          refuse_rating?: number | null
+          roads_rating?: number | null
+          upvotes?: number
+          water_rating?: number | null
+        }
+        Relationships: []
+      }
       pledge_audit_log: {
         Row: {
           created_at: string
@@ -337,6 +376,7 @@ export type Database = {
         }
         Returns: string
       }
+      upvote_municipal_rating: { Args: { _id: string }; Returns: number }
     }
     Enums: {
       [_ in never]: never

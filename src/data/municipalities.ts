@@ -9,3 +9,20 @@ export const municipalities: Municipality[] = [
   { id:"tshwane", name:"City of Tshwane", province:"Gauteng", population:4040000, unemploymentRate:34.4, unemploymentTrend:0.3, auditRating:"Qualified", governanceRank:3, ratesIndex:108, monthlyUtilities:"R2,000–R3,400", services:{water:94,electricity:90,sanitation:93,waste:92}, updates:[{date:"23 Aug 2026",type:"Service alert",title:"Electricity network maintenance",detail:"Planned substation maintenance is scheduled by regional service teams."},{date:"07 Aug 2026",type:"Project",title:"Bus rapid transit extension",detail:"Station and lane works continue along the next implementation phase."},{date:"18 Jul 2026",type:"Ward notice",title:"Community budget hearings",detail:"Ward-level hearings are receiving public infrastructure submissions."}]},
   { id:"nelson-mandela-bay", name:"Nelson Mandela Bay", province:"Eastern Cape", population:1296000, unemploymentRate:40.7, unemploymentTrend:0.6, auditRating:"Unqualified", governanceRank:2, ratesIndex:96, monthlyUtilities:"R1,650–R2,850", services:{water:93,electricity:94,sanitation:91,waste:89}, updates:[{date:"19 Aug 2026",type:"Infrastructure",title:"Nooitgedagt water augmentation",detail:"Operational upgrades are improving water transfer reliability."},{date:"05 Aug 2026",type:"Project",title:"Township road resealing",detail:"Road preservation work is progressing across designated wards."},{date:"20 Jul 2026",type:"Ward notice",title:"Public participation calendar",detail:"Municipal planning sessions are open for resident submissions."}]},
 ];
+
+export interface MunicipalMetric {
+  id: string; code: string; name: string; province: string; category: string;
+  localUnemployment: number; waterAccessRate: number; electricityAccessRate: number;
+  auditRating: string; operatingBudget: string; cashCoverageMonths: number;
+  nationalUnemploymentBenchmark: number; nationalGdpImpactNote: string;
+}
+
+const NATIONAL_UNEMPLOYMENT = 32.1;
+
+export const municipalMetrics: MunicipalMetric[] = [
+  { id: "ekurhuleni", code: "EKU", name: "City of Ekurhuleni", province: "Gauteng", category: "A", localUnemployment: 37.1, waterAccessRate: 94, electricityAccessRate: 91, auditRating: "Unqualified", operatingBudget: "R62.4bn", cashCoverageMonths: 1.8, nationalUnemploymentBenchmark: NATIONAL_UNEMPLOYMENT, nationalGdpImpactNote: "Manufacturing and logistics hub (OR Tambo); ~7% of national GDP." },
+  { id: "cape-town", code: "CPT", name: "City of Cape Town", province: "Western Cape", category: "A", localUnemployment: 29.2, waterAccessRate: 98, electricityAccessRate: 96, auditRating: "Clean Audit", operatingBudget: "R68.3bn", cashCoverageMonths: 3.4, nationalUnemploymentBenchmark: NATIONAL_UNEMPLOYMENT, nationalGdpImpactNote: "Finance, tourism and tech services; ~10% of national GDP." },
+  { id: "johannesburg", code: "JHB", name: "City of Johannesburg", province: "Gauteng", category: "A", localUnemployment: 35.7, waterAccessRate: 95, electricityAccessRate: 89, auditRating: "Qualified", operatingBudget: "R86.7bn", cashCoverageMonths: 0.9, nationalUnemploymentBenchmark: NATIONAL_UNEMPLOYMENT, nationalGdpImpactNote: "Largest metro economy; finance and trade; ~15% of national GDP." },
+  { id: "ethekwini", code: "ETH", name: "eThekwini", province: "KwaZulu-Natal", category: "A", localUnemployment: 39.6, waterAccessRate: 91, electricityAccessRate: 92, auditRating: "Qualified", operatingBudget: "R59.1bn", cashCoverageMonths: 1.2, nationalUnemploymentBenchmark: NATIONAL_UNEMPLOYMENT, nationalGdpImpactNote: "Durban port anchors import/export trade; ~9% of national GDP." },
+  { id: "tshwane", code: "TSH", name: "City of Tshwane", province: "Gauteng", category: "A", localUnemployment: 34.4, waterAccessRate: 94, electricityAccessRate: 90, auditRating: "Qualified", operatingBudget: "R48.6bn", cashCoverageMonths: 0.6, nationalUnemploymentBenchmark: NATIONAL_UNEMPLOYMENT, nationalGdpImpactNote: "Administrative capital; government and automotive sectors; ~8% of national GDP." },
+];

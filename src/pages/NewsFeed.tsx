@@ -13,6 +13,7 @@ import { cn } from "@/lib/utils";
 const NewsFeed = () => {
   const [query, setQuery] = useState("");
   const [category, setCategory] = useState<string>("All");
+  const [preset, setPreset] = useState<SummarizerPreset | undefined>();
 
   const filtered = useMemo(() => {
     const q = query.trim().toLowerCase();

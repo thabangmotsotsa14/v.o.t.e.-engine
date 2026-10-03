@@ -17,6 +17,13 @@ type ServiceKey = (typeof SERVICES)[number]["key"];
 
 interface RatingRow { id: string; municipality_name: string; comment: string | null; upvotes: number; created_at: string; water_rating: number | null; electricity_rating: number | null; refuse_rating: number | null; roads_rating: number | null }
 
+/** Baseline community ratings (avg + response count) supplied by V.O.T.E.; live submissions are blended in. */
+const BASELINES: Record<string, { name: string; count: number; avg: Record<ServiceKey, number> }> = {
+  ekurhuleni: { name: "City of Ekurhuleni", count: 142, avg: { water_rating: 3.4, electricity_rating: 2.8, refuse_rating: 3.9, roads_rating: 2.5 } },
+  "cape-town": { name: "City of Cape Town", count: 210, avg: { water_rating: 4.1, electricity_rating: 3.8, refuse_rating: 4.5, roads_rating: 4.0 } },
+  johannesburg: { name: "City of Johannesburg", count: 188, avg: { water_rating: 2.9, electricity_rating: 2.2, refuse_rating: 2.7, roads_rating: 2.1 } },
+};
+
 const Stars = ({ value, onChange, label }: { value: number; onChange: (v: number) => void; label: string }) => (
   <div className="flex items-center justify-between gap-3">
     <span className="text-sm text-foreground">{label}</span>
@@ -36,10 +43,13 @@ const MunicipalServiceRating = () => {
   const [comment, setComment] = useState("");
   const [submitting, setSubmitting] = useState(false);
   const [recent, setRecent] = useState<RatingRow[]>([]);
+  const [all, setAll] = useState<(Pick<RatingRow, ServiceKey> & { municipality_id: string })[]>([]);
 
   const load = useCallback(async () => {
     const { data } = await supabase.from("municipal_ratings").select("*").order("created_at", { ascending: false }).limit(6);
     setRecent((data as RatingRow[]) ?? []);
+    const { data: agg } = await supabase.from("municipal_ratings").select("municipality_id, water_rating, electricity_rating, refuse_rating, roads_rating").limit(5000);
+    setAll((agg as typeof all) ?? []);
   }, []);
   useEffect(() => { load(); }, [load]);
 
@@ -71,7 +81,35 @@ const MunicipalServiceRating = () => {
     if (!error) setRecent((r) => r.map((x) => (x.id === id ? { ...x, upvotes: Number(data) } : x)));
   };
 
+  const summaries = municipalMetrics.map((m) => {
+    const base = BASELINES[m.id];
+    const rows = all.filter((r) => r.municipality_id === m.id);
+    const avg = Object.fromEntries(SERVICES.map(({ key }) => {
+      const vals = rows.map((r) => r[key]).filter((v): v is number => v !== null);
+      const n = (base?.count ?? 0) + vals.length;
+      const sum = (base ? base.avg[key] * base.count : 0) + vals.reduce((a, b) => a + b, 0);
+      return [key, n ? sum / n : null];
+    })) as Record<ServiceKey, number | null>;
+    return { m, avg, responses: (base?.count ?? 0) + rows.length };
+  }).filter((s) => s.responses > 0);
+
   return (
+    <div className="space-y-6">
+    <div className="overflow-x-auto rounded-lg border border-border">
+      <table className="w-full text-sm">
+        <caption className="sr-only">Average community service ratings</caption>
+        <thead><tr className="border-b border-border text-left text-muted-foreground"><th className="p-3 font-medium">Municipality</th>{SERVICES.map((s) => <th key={s.key} className="p-3 font-medium">{s.label}</th>)}<th className="p-3 font-medium">Responses</th></tr></thead>
+        <tbody>
+          {summaries.map(({ m, avg, responses }) => (
+            <tr key={m.id} className="border-b border-border last:border-0">
+              <td className="p-3 font-medium text-foreground">{m.name}</td>
+              {SERVICES.map((s) => <td key={s.key} className="p-3 text-foreground"><span className="inline-flex items-center gap-1"><Star className="h-3.5 w-3.5 fill-accent text-accent" />{avg[s.key]?.toFixed(1) ?? "—"}</span></td>)}
+              <td className="p-3 text-muted-foreground">{responses}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
     <div className="grid gap-6 lg:grid-cols-2">
       <form onSubmit={submit} className="space-y-4 rounded-lg border border-border bg-card p-5">
         <label className="block text-sm text-muted-foreground">
@@ -107,6 +145,7 @@ const MunicipalServiceRating = () => {
           );
         })}
       </div>
+    </div>
     </div>
   );
 };

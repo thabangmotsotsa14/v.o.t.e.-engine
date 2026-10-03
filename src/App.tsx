@@ -8,6 +8,7 @@ import Founder from "./pages/Founder.tsx";
 import MunicipalInsights from "./pages/MunicipalInsights.tsx";
 import MunicipalMoney from "./pages/MunicipalMoney.tsx";
 import NewsFeed from "./pages/NewsFeed.tsx";
+import Donate from "./pages/Donate.tsx";
 import NotFound from "./pages/NotFound.tsx";
 
 const queryClient = new QueryClient();
@@ -21,6 +22,7 @@ const App = () => (
         <Routes>
           <Route path="/" element={<Index />} />
           <Route path="/founder" element={<Founder />} />
+          <Route path="/donate" element={<Donate />} />
           <Route path="/municipal-insights" element={<MunicipalInsights />} />
           <Route path="/municipal-money" element={<MunicipalMoney />} />
           <Route path="/news" element={<NewsFeed />} />

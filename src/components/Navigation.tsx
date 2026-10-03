@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Menu, X, FileText, Search, Mail, ExternalLink, User, Building2, Newspaper, Landmark } from "lucide-react";
+import { Menu, X, FileText, Search, Mail, ExternalLink, User, Building2, Newspaper, Landmark, Heart } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { cn } from "@/lib/utils";
@@ -114,6 +114,19 @@ const Navigation = () => {
               <User className="h-4 w-4" />
               <span className="hidden lg:inline">Founder</span>
             </Link>
+            <Link
+              to="/donate"
+              aria-label="Donate"
+              title="Donate"
+              aria-current={location.pathname === "/donate" ? "page" : undefined}
+              className={cn(
+                "flex items-center gap-1.5 px-3 py-2 rounded-lg text-sm font-medium transition-colors hover:text-foreground hover:bg-muted",
+                location.pathname === "/donate" ? "bg-muted text-foreground" : "text-muted-foreground",
+              )}
+            >
+              <Heart className="h-4 w-4" />
+              <span className="hidden lg:inline">Donate</span>
+            </Link>
             <a href="https://voteparty.vercel.app" target="_blank" rel="noopener noreferrer" className="ml-2">
               <Button size="sm" className="bg-gradient-gold text-accent-foreground font-bold">
                 <ExternalLink className="mr-1.5 h-3.5 w-3.5" />
@@ -170,6 +183,14 @@ const Navigation = () => {
             >
               <User className="h-5 w-5" />
               <span className="text-xs">Founder</span>
+            </Link>
+            <Link
+              to="/donate"
+              onClick={() => setIsOpen(false)}
+              className="flex flex-col items-center gap-1 p-3 rounded-lg bg-muted text-muted-foreground hover:text-foreground"
+            >
+              <Heart className="h-5 w-5" />
+              <span className="text-xs">Donate</span>
             </Link>
             <a href="https://voteparty.vercel.app" target="_blank" rel="noopener noreferrer" className="col-span-3 mt-2">
               <Button size="sm" className="w-full bg-gradient-gold text-accent-foreground font-bold">

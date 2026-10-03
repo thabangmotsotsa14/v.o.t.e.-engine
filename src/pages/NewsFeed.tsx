@@ -1,5 +1,6 @@
 import { useMemo, useState } from "react";
 import { Newspaper, Search, ExternalLink, CalendarDays, Tag, Zap } from "lucide-react";
+import LiveStatsFeed from "@/components/LiveStatsFeed";
 import ArticleSummarizerModal, { type SummarizerPreset } from "@/components/ArticleSummarizerModal";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
@@ -53,6 +54,12 @@ const NewsFeed = () => {
             <ArticleSummarizerModal preset={preset} />
           </div>
 
+          <section className="mt-10" aria-labelledby="live-feed-heading">
+            <h2 id="live-feed-heading" className="mb-4 font-display text-xl font-semibold text-foreground">Live from Stats SA</h2>
+            <LiveStatsFeed />
+          </section>
+
+          <h2 className="mt-12 font-display text-xl font-semibold text-foreground">Release archive</h2>
           {/* Search */}
           <div className="mt-8 flex flex-col gap-3 sm:flex-row">
             <div className="relative flex-1">

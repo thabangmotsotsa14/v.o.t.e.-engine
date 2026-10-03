@@ -19,6 +19,18 @@ export interface MunicipalMetric {
 
 const NATIONAL_UNEMPLOYMENT = 32.1;
 
+/** National Treasury aggregated 2025/26 MTREF benchmarks (as supplied by V.O.T.E.). */
+export const NATIONAL_BENCHMARKS = {
+  unemployment: 32.1,
+  waterAccess: 88.7,
+  electricityAccess: 84.7,
+  totalMunicipalBudget: "R698.1bn",
+  bulkPurchasesShare: 35.0,
+  employeeCostsShare: 27.0,
+  capitalExpenditure: "R78.9bn",
+  tradingInfrastructureShare: 52.1,
+} as const;
+
 export const municipalMetrics: MunicipalMetric[] = [
   { id: "ekurhuleni", code: "EKU", name: "City of Ekurhuleni", province: "Gauteng", category: "A", localUnemployment: 37.1, waterAccessRate: 94, electricityAccessRate: 91, auditRating: "Unqualified", operatingBudget: "R62.4bn", cashCoverageMonths: 1.8, nationalUnemploymentBenchmark: NATIONAL_UNEMPLOYMENT, nationalGdpImpactNote: "Manufacturing and logistics hub (OR Tambo); ~7% of national GDP." },
   { id: "cape-town", code: "CPT", name: "City of Cape Town", province: "Western Cape", category: "A", localUnemployment: 29.2, waterAccessRate: 98, electricityAccessRate: 96, auditRating: "Clean Audit", operatingBudget: "R68.3bn", cashCoverageMonths: 3.4, nationalUnemploymentBenchmark: NATIONAL_UNEMPLOYMENT, nationalGdpImpactNote: "Finance, tourism and tech services; ~10% of national GDP." },

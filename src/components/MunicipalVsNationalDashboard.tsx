@@ -8,23 +8,7 @@ import MunicipalMoneyWidget from "./MunicipalMoneyWidget";
 import MunicipalComparison from "./MunicipalComparison";
 import MunicipalServiceRating from "./MunicipalServiceRating";
 import StatsBizExplorer from "./StatsBizExplorer";
-import { fetchLiveStatsSaArticles } from "@/services/statsSaFeed";
-import { RECENT_ARTICLES, type Article } from "@/data/statsBizData";
-
-const LiveFeed = () => {
-  const [items, setItems] = useState<Article[] | null>(null);
-  const [failed, setFailed] = useState(false);
-  useEffect(() => {
-    fetchLiveStatsSaArticles().then(setItems).catch(() => { setFailed(true); setItems(RECENT_ARTICLES); });
-  }, []);
-  if (!items) return <p className="flex items-center gap-2 py-8 text-sm text-muted-foreground"><Loader2 className="h-4 w-4 animate-spin" />Loading live Stats SA feed…</p>;
-  return (
-    <div className="space-y-3">
-      {failed && <p className="text-xs text-muted-foreground">Live feed unavailable right now — showing recent Stats SA releases.</p>}
-      <StatsBizExplorer articles={items} />
-    </div>
-  );
-};
+import LiveStatsFeed from "./LiveStatsFeed";
 
 const MunicipalVsNationalDashboard = () => {
   const [id, setId] = useState(municipalMetrics[0].id);
@@ -68,7 +52,7 @@ const MunicipalVsNationalDashboard = () => {
         </Card>
       </TabsContent>
       <TabsContent value="compare"><MunicipalComparison /></TabsContent>
-      <TabsContent value="feed"><LiveFeed /></TabsContent>
+      <TabsContent value="feed"><LiveStatsFeed /></TabsContent>
       <TabsContent value="rate"><MunicipalServiceRating /></TabsContent>
     </Tabs>
   );

@@ -42,7 +42,7 @@ const NewsFeed = () => {
             <Badge variant="outline" className="mb-4 border-primary/40 text-primary">
               <Newspaper className="mr-1.5 h-3.5 w-3.5" /> Stats SA Wire
             </Badge>
-            <h1 className="font-display text-3xl font-bold text-foreground sm:text-4xl">News &amp; Data Feed</h1>
+            <h1 className="font-display text-3xl font-bold text-foreground sm:text-4xl">Vote News</h1>
             <p className="mt-3 text-muted-foreground">
               Official statistics releases, data stories and announcements from Statistics South Africa — the evidence
               base for transparent civic oversight.

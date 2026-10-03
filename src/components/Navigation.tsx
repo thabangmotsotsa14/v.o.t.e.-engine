@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Menu, X, FileText, Search, Mail, ExternalLink, User, Building2, Newspaper } from "lucide-react";
+import { Menu, X, FileText, Search, Mail, ExternalLink, User, Building2, Newspaper, Landmark } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { cn } from "@/lib/utils";
@@ -77,8 +77,8 @@ const Navigation = () => {
             </Link>
             <Link
               to="/news"
-              aria-label="News & AI Summarizer"
-              title="News & AI Summarizer"
+              aria-label="Vote News"
+              title="Vote News"
               aria-current={location.pathname.startsWith("/news") ? "page" : undefined}
               className={cn(
                 "flex items-center gap-1.5 px-3 py-2 rounded-lg text-sm font-medium transition-colors hover:text-foreground hover:bg-muted",
@@ -86,7 +86,20 @@ const Navigation = () => {
               )}
             >
               <Newspaper className="h-4 w-4" />
-              <span className="hidden lg:inline">News &amp; AI Summarizer</span>
+              <span className="hidden lg:inline">Vote News</span>
+            </Link>
+            <Link
+              to="/municipal-money"
+              aria-label="Municipal Money"
+              title="Municipal Money"
+              aria-current={location.pathname === "/municipal-money" ? "page" : undefined}
+              className={cn(
+                "flex items-center gap-1.5 px-3 py-2 rounded-lg text-sm font-medium transition-colors hover:text-foreground hover:bg-muted",
+                location.pathname === "/municipal-money" ? "bg-muted text-foreground" : "text-muted-foreground",
+              )}
+            >
+              <Landmark className="h-4 w-4" />
+              <span className="hidden lg:inline">Municipal Money</span>
             </Link>
             <Link
               to="/founder"
@@ -140,7 +153,15 @@ const Navigation = () => {
               className="flex flex-col items-center gap-1 p-3 rounded-lg bg-muted text-muted-foreground hover:text-foreground"
             >
               <Newspaper className="h-5 w-5" />
-              <span className="text-xs">News</span>
+              <span className="text-xs">Vote News</span>
+            </Link>
+            <Link
+              to="/municipal-money"
+              onClick={() => setIsOpen(false)}
+              className="flex flex-col items-center gap-1 p-3 rounded-lg bg-muted text-muted-foreground hover:text-foreground"
+            >
+              <Landmark className="h-5 w-5" />
+              <span className="text-xs">Money</span>
             </Link>
             <Link
               to="/founder"

@@ -60,7 +60,7 @@ const MunicipalComparison = () => {
           </TableBody>
         </Table>
       </div>
-      <p className="text-xs text-muted-foreground">Better performance is highlighted in green. National benchmarks: National Treasury 2025/26 MTREF aggregates.</p>
+      <p className="text-xs text-muted-foreground">Better performance is highlighted in green. National benchmarks: National Treasury 2025/26 MTREF aggregates. Cape Town and Ekurhuleni audit outcomes are confirmed from the Auditor-General's 2023-24 report; other metro figures are reference estimates pending official verification.</p>
       <div className="grid gap-3 sm:grid-cols-3">
         {[["Total municipal budget 2025/26", NB.totalMunicipalBudget], ["Capital expenditure", `${NB.capitalExpenditure} · ${NB.tradingInfrastructureShare}% trading infrastructure`], ["Operating spend", `Bulk purchases ${NB.bulkPurchasesShare}% · Employees ${NB.employeeCostsShare}%`]].map(([l, v]) => (
           <div key={l} className="rounded-lg border border-border bg-card p-3"><p className="text-xs text-muted-foreground">{l}</p><p className="font-display font-semibold text-foreground">{v}</p></div>
